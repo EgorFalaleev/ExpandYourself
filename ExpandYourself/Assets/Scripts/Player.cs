@@ -57,5 +57,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void IncreaseSize(float sizeIncreasingValue)
+    {
+        transform.localScale = new Vector2(transform.localScale.x + sizeIncreasingValue, transform.localScale.y + sizeIncreasingValue);
+        UpdateBounds(sizeIncreasingValue);
+    }
 
+    public void UpdateBounds(float sizeIncreasingValue)
+    {
+        leftBound += sizeIncreasingValue / 4;
+        rightBound -= sizeIncreasingValue / 4;
+        upperBound -= sizeIncreasingValue / 4;
+        bottomBound += sizeIncreasingValue / 4;
+    }
 }
