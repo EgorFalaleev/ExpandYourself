@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
         UpdateBounds(sizeIncreasingValue);
     }
 
+    // when player becomes bigger, screen bounds should be updated to prevent him from going off screen
     public void UpdateBounds(float sizeIncreasingValue)
     {
         leftBound += sizeIncreasingValue / 4;

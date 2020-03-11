@@ -20,6 +20,5 @@ public class Pickup : MonoBehaviour
     {
         Destroy(gameObject);
         player.IncreaseSize(sizeIncreasingValue);
-        player.UpdateBounds(sizeIncreasingValue);
     }
 }
