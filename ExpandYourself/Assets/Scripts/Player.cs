@@ -50,8 +50,12 @@ public class Player : MonoBehaviour
             float xMovement = Input.GetAxis("Horizontal");
             float yMovement = Input.GetAxis("Vertical");
 
+            transform.position = new Vector2(Mathf.Clamp(transform.position.x, leftBound, rightBound), Mathf.Clamp(transform.position.y, bottomBound, upperBound));
+
             // change player's velocity depending on the input
             myRigidbody.velocity = new Vector2(xMovement * moveSpeed, yMovement * moveSpeed);
         }
     }
+
+
 }
