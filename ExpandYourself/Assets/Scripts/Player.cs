@@ -8,6 +8,10 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float mouseMovementSpeed = 1f;
     [SerializeField] bool mouseMovement;
+    [SerializeField] float leftBound = -8.3f;
+    [SerializeField] float rightBound = 8.3f;
+    [SerializeField] float bottomBound = -4.4f;
+    [SerializeField] float upperBound = 4.4f;
 
     // cached references
     Rigidbody2D myRigidbody;
@@ -32,6 +36,10 @@ public class Player : MonoBehaviour
 
             // convert screen mouse position to world space
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+            // make the block move inside a screen
+            mousePosition.x = Mathf.Clamp(mousePosition.x, leftBound, rightBound);
+            mousePosition.y = Mathf.Clamp(mousePosition.y, bottomBound, upperBound);
 
             // smoothly move player from his position to mouse position
             transform.position = Vector2.Lerp(transform.position, mousePosition, mouseMovementSpeed);
