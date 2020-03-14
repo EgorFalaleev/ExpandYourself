@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    // configuration parameters
-    [SerializeField] float sizeIncreasingValue = 0.5f;
-    
     // cached references
     Player player;
+
+    // state variables
+    private Vector2 circleScale;
 
     void Start()
     {
         // get the player object
         player = FindObjectOfType<Player>();
+
+        circleScale = new Vector2(transform.localScale.x, transform.localScale.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
-        player.IncreaseSize(sizeIncreasingValue);
+        player.IncreaseSize(circleScale.x);
+    }
+
+    public Vector2 GetCircleScale()
+    {
+        return circleScale;
     }
 }

@@ -8,18 +8,19 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float mouseMovementSpeed = 1f;
     [SerializeField] bool mouseMovement;
-    [SerializeField] float leftBound = -8.3f;
-    [SerializeField] float rightBound = 8.3f;
-    [SerializeField] float bottomBound = -4.4f;
-    [SerializeField] float upperBound = 4.4f;
 
     // cached references
     Rigidbody2D myRigidbody;
+
+    // state variables
+    Vector2 screenBounds;
 
     void Start()
     {
         // get components
         myRigidbody = GetComponent<Rigidbody2D>();
+
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
     }
 
     void Update()
@@ -38,8 +39,8 @@ public class Player : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
             // make the block move inside a screen
-            mousePosition.x = Mathf.Clamp(mousePosition.x, leftBound, rightBound);
-            mousePosition.y = Mathf.Clamp(mousePosition.y, bottomBound, upperBound);
+            mousePosition.x = Mathf.Clamp(mousePosition.x, -screenBounds.x, screenBounds.x);
+            mousePosition.y = Mathf.Clamp(mousePosition.y, -screenBounds.y, screenBounds.y);
 
             // smoothly move player from his position to mouse position
             transform.position = Vector2.Lerp(transform.position, mousePosition, mouseMovementSpeed);
@@ -50,7 +51,8 @@ public class Player : MonoBehaviour
             float xMovement = Input.GetAxis("Horizontal");
             float yMovement = Input.GetAxis("Vertical");
 
-            transform.position = new Vector2(Mathf.Clamp(transform.position.x, leftBound, rightBound), Mathf.Clamp(transform.position.y, bottomBound, upperBound));
+            transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBounds.x, screenBounds.x),
+                                             Mathf.Clamp(transform.position.y, -screenBounds.y, screenBounds.y));
 
             // change player's velocity depending on the input
             myRigidbody.velocity = new Vector2(xMovement * moveSpeed, yMovement * moveSpeed);
@@ -59,16 +61,7 @@ public class Player : MonoBehaviour
 
     public void IncreaseSize(float sizeIncreasingValue)
     {
-        transform.localScale = new Vector2(transform.localScale.x + sizeIncreasingValue, transform.localScale.y + sizeIncreasingValue);
-        UpdateBounds(sizeIncreasingValue);
-    }
-
-    // when player becomes bigger, screen bounds should be updated to prevent him from going off screen
-    public void UpdateBounds(float sizeIncreasingValue)
-    {
-        leftBound += sizeIncreasingValue / 4;
-        rightBound -= sizeIncreasingValue / 4;
-        upperBound -= sizeIncreasingValue / 4;
-        bottomBound += sizeIncreasingValue / 4;
+        transform.localScale = new Vector2(transform.localScale.x + sizeIncreasingValue / transform.localScale.x,
+                                           transform.localScale.y + sizeIncreasingValue / transform.localScale.y);
     }
 }
