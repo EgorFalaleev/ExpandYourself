@@ -14,13 +14,20 @@ public class Player : MonoBehaviour
 
     // state variables
     Vector2 screenBounds;
+    float playerWidth;
+    float playerHeight;
 
     void Start()
     {
         // get components
         myRigidbody = GetComponent<Rigidbody2D>();
-
+        
+        // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
+        // set player sizes
+        playerWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
+        playerHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
     }
 
     void Update()
@@ -39,8 +46,8 @@ public class Player : MonoBehaviour
             mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
             // make the block move inside a screen
-            mousePosition.x = Mathf.Clamp(mousePosition.x, -screenBounds.x, screenBounds.x);
-            mousePosition.y = Mathf.Clamp(mousePosition.y, -screenBounds.y, screenBounds.y);
+            mousePosition.x = Mathf.Clamp(mousePosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
+            mousePosition.y = Mathf.Clamp(mousePosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
 
             // smoothly move player from his position to mouse position
             transform.position = Vector2.Lerp(transform.position, mousePosition, mouseMovementSpeed);
@@ -63,5 +70,9 @@ public class Player : MonoBehaviour
     {
         transform.localScale = new Vector2(transform.localScale.x + sizeIncreasingValue / transform.localScale.x,
                                            transform.localScale.y + sizeIncreasingValue / transform.localScale.y);
+
+        // update player bounds
+        playerWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
+        playerHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
     }
 }
