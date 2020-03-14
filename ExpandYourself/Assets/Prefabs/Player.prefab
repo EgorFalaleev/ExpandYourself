@@ -146,7 +146,3 @@ MonoBehaviour:
   moveSpeed: 5
   mouseMovementSpeed: 1
   mouseMovement: 0
-  leftBound: -8.3
-  rightBound: 8.3
-  bottomBound: -4.4
-  upperBound: 4.4

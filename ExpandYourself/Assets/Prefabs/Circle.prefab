@@ -111,3 +111,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e731d14de06fc774bb5e2379ab114dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaleToDestroy: 0.1
+  scalePerFrameDivideFactor: 500

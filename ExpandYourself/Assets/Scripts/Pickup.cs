@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    // configuration parameters
+    [SerializeField] float scaleToDestroy = 0.01f;
+    [SerializeField] float scalePerFrameDivideFactor = 1000f;
+
     // cached references
     Player player;
 
@@ -18,14 +22,28 @@ public class Pickup : MonoBehaviour
         circleScale = new Vector2(transform.localScale.x, transform.localScale.y);
     }
 
+    private void Update()
+    {
+        Shrink();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(gameObject);
         player.IncreaseSize(circleScale.x);
     }
 
-    public Vector2 GetCircleScale()
+    private void Shrink()
     {
-        return circleScale;
+        var scaleDifferenceX = transform.localScale.x / scalePerFrameDivideFactor;
+        var scaleDifferenceY = transform.localScale.y / scalePerFrameDivideFactor;
+
+        transform.localScale = new Vector2(transform.localScale.x - scaleDifferenceX, transform.localScale.y - scaleDifferenceY);
+
+        // destroy pickup if it becomes too small
+        if (transform.localScale.x < scaleToDestroy || transform.localScale.y < scaleToDestroy)
+        {
+            Destroy(gameObject);
+        }
     }
 }
