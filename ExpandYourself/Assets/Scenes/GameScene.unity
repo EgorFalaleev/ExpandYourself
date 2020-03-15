@@ -710,7 +710,12 @@ PrefabInstance:
     - target: {fileID: 849262168879002502, guid: 6e7ead3b3194a2b47ab174960f568e5e,
         type: 3}
       propertyPath: mouseMovement
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 849262168879002502, guid: 6e7ead3b3194a2b47ab174960f568e5e,
+        type: 3}
+      propertyPath: speedAcceleration
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 849262168879002503, guid: 6e7ead3b3194a2b47ab174960f568e5e,
         type: 3}
