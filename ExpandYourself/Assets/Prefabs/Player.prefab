@@ -146,3 +146,4 @@ MonoBehaviour:
   moveSpeed: 5
   mouseMovementSpeed: 1
   mouseMovement: 0
+  slowDownFactor: 0.3

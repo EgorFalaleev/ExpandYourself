@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float mouseMovementSpeed = 1f;
     [SerializeField] bool mouseMovement;
+    [SerializeField] float slowDownFactor = 0.3f;
 
     // cached references
     Rigidbody2D myRigidbody;
@@ -74,5 +75,9 @@ public class Player : MonoBehaviour
         // update player bounds
         playerWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x;
         playerHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y;
+
+        // slow the player down
+        moveSpeed -= slowDownFactor;
+        mouseMovementSpeed /= 2;
     }
 }
