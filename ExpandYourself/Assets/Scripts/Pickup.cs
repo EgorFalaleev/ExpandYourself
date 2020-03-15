@@ -6,7 +6,7 @@ public class Pickup : MonoBehaviour
 {
     // configuration parameters
     [SerializeField] float scaleToDestroy = 0.01f;
-    [SerializeField] float scalePerFrameDivideFactor = 1000f;
+    [SerializeField] float scalePerFrameDifferenceFactor = 0.001f;
 
     // cached references
     Player player;
@@ -35,10 +35,7 @@ public class Pickup : MonoBehaviour
 
     private void Shrink()
     {
-        var scaleDifferenceX = transform.localScale.x / scalePerFrameDivideFactor;
-        var scaleDifferenceY = transform.localScale.y / scalePerFrameDivideFactor;
-
-        transform.localScale = new Vector2(transform.localScale.x - scaleDifferenceX, transform.localScale.y - scaleDifferenceY);
+        transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor, transform.localScale.y - scalePerFrameDifferenceFactor);
         circleScale = transform.localScale;
 
         // destroy pickup if it becomes too small
