@@ -19,6 +19,8 @@ public class Pickup : MonoBehaviour
         // get the player object
         player = FindObjectOfType<Player>();
 
+        // set pickup scale
+        transform.localScale = FindObjectOfType<PickupGenerator>().GetPickupScale();
         circleScale = new Vector2(transform.localScale.x, transform.localScale.y);
     }
 

@@ -11,7 +11,8 @@ public class PickupGenerator : MonoBehaviour
     [SerializeField] float maxPickupScale = 2f;
 
     // state variables
-    Vector2 screenBounds;
+    private Vector2 screenBounds;
+    private Vector2 pickupScale;
 
     void Start()
     {
@@ -28,8 +29,10 @@ public class PickupGenerator : MonoBehaviour
 
         float randomScale = Random.Range(minPickupScale, maxPickupScale);
 
+        // place a pickup on a random position within the screen and make its size random
         pickup.transform.position = new Vector2(Random.Range(screenBounds.x, -screenBounds.x), Random.Range(screenBounds.y, -screenBounds.y));
         pickup.transform.localScale = new Vector2(randomScale, randomScale);
+        pickupScale = pickup.transform.localScale;
     }
 
     IEnumerator SpawnCoroutine()
@@ -39,5 +42,10 @@ public class PickupGenerator : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpawns);
             SpawnPickup();
         }
+    }
+
+    public Vector2 GetPickupScale()
+    {
+        return pickupScale;
     }
 }
