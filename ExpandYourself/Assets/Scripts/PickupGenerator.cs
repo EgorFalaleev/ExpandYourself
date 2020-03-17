@@ -30,7 +30,8 @@ public class PickupGenerator : MonoBehaviour
         float randomScale = Random.Range(minPickupScale, maxPickupScale);
 
         // place a pickup on a random position within the screen and make its size random
-        pickup.transform.position = new Vector2(Random.Range(screenBounds.x, -screenBounds.x), Random.Range(screenBounds.y, -screenBounds.y));
+        pickup.transform.position = new Vector2(Random.Range(screenBounds.x - randomScale, -screenBounds.x + randomScale),
+                                                Random.Range(screenBounds.y - randomScale, -screenBounds.y + randomScale));
         pickup.transform.localScale = new Vector2(randomScale, randomScale);
         pickupScale = pickup.transform.localScale;
     }

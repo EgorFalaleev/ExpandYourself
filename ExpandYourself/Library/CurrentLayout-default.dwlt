@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 58
+  controlID: 62
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 89
+  controlID: 63
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 42fbffff
-      m_LastClickedID: -1214
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: 6cfbfffffe330000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -453,9 +453,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.011234947, y: 0.12756285, z: -48.074406}
+    m_Target: {x: -2.4983227, y: -0.8280338, z: -79.72213}
     speed: 2
-    m_Value: {x: -0.011234947, y: 0.12756285, z: -48.074406}
+    m_Value: {x: -2.4983227, y: -0.8280338, z: -79.72213}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -505,9 +505,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 11.266148
+    m_Target: 9.313085
     speed: 2
-    m_Value: 11.266148
+    m_Value: 9.313085
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -597,19 +597,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\programming\Unity\ExpandYourself.git\ExpandYourself
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 6a340000
-    m_LastClickedID: 13418
+    m_SelectedIDs: 66340000
+    m_LastClickedID: 13414
     m_ExpandedIDs: 000000006034000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
