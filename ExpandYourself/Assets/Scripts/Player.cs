@@ -78,10 +78,7 @@ public class Player : MonoBehaviour
                                            transform.localScale.y + sizeIncreasingValue / transform.localScale.y);
 
         UpdatePlayerBounds();
-
-        // slow the player down
-        moveSpeed -= slowDownFactor;
-        mouseMovementSpeed /= 2;
+        HandleMoveSpeed();
     }
 
     private void UpdatePlayerBounds()
@@ -97,10 +94,15 @@ public class Player : MonoBehaviour
 
         UpdatePlayerBounds();
 
-        // increase speed
-        moveSpeed += speedAcceleration;
-        mouseMovementSpeed += scalePerFrameDifferenceFactor;
+        HandleMoveSpeed();
 
         if (mouseMovementSpeed > 1) mouseMovementSpeed = 1;
+    }
+
+    private void HandleMoveSpeed()
+    {
+        // slow the player down
+        moveSpeed = 3 * transform.localScale.x - 8;
+        mouseMovementSpeed /= 2;
     }
 }
