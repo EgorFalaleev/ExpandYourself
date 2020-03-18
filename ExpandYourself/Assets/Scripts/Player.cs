@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] bool mouseMovement;
     [SerializeField] float scalePerFrameDifferenceFactor = 0.0005f;
+    [SerializeField] float scaleToLose = 0.2f;
 
     // cached references
     Rigidbody2D myRigidbody;
@@ -92,6 +93,9 @@ public class Player : MonoBehaviour
 
         UpdatePlayerBounds();
         HandleMoveSpeed();
+
+        // lose if size is too small
+        if (transform.localScale.x < scaleToLose) Defeat();
     }
 
     private void HandleMoveSpeed()
@@ -105,6 +109,6 @@ public class Player : MonoBehaviour
 
     private void Defeat()
     {
-
+        Destroy(gameObject);
     }
 }
