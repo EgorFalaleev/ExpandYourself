@@ -5,13 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // configuration parameters
-    [SerializeField] float moveSpeed = 5f;
     [Range (0,1)]
     [SerializeField] float mouseMovementSpeed = 1f;
+    [SerializeField] float moveSpeed = 5f;
     [SerializeField] bool mouseMovement;
-    [SerializeField] float slowDownFactor = 0.3f;
     [SerializeField] float scalePerFrameDifferenceFactor = 0.0005f;
-    [SerializeField] float speedAcceleration = 0.05f;
 
     // cached references
     Rigidbody2D myRigidbody;
@@ -93,16 +91,20 @@ public class Player : MonoBehaviour
         transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor, transform.localScale.y - scalePerFrameDifferenceFactor);
 
         UpdatePlayerBounds();
-
         HandleMoveSpeed();
-
-        if (mouseMovementSpeed > 1) mouseMovementSpeed = 1;
     }
 
     private void HandleMoveSpeed()
     {
         // slow the player down
-        moveSpeed = 3 * transform.localScale.x - 8;
+        moveSpeed = Mathf.Exp(2.5f - transform.localScale.x) + 1;
         mouseMovementSpeed /= 2;
+
+        if (mouseMovementSpeed > 1) mouseMovementSpeed = 1;
+    }
+
+    private void Defeat()
+    {
+
     }
 }
