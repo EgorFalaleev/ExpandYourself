@@ -105,8 +105,7 @@ public class Player : MonoBehaviour
     {
         // slow the player down
         moveSpeed = Mathf.Exp(2.5f - transform.localScale.x) + 1;
-        mouseMovementSpeed /= 2;
-
+        mouseMovementSpeed = Mathf.Exp(-transform.localScale.x) / 10;
         if (mouseMovementSpeed > 1) mouseMovementSpeed = 1;
     }
 
