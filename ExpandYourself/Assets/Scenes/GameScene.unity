@@ -332,7 +332,7 @@ MonoBehaviour:
     type: 3}
   timeBetweenSpawns: 2
   minPickupScale: 0.75
-  maxPickupScale: 2
+  maxPickupScale: 1.5
 --- !u!1001 &849262168857293371
 PrefabInstance:
   m_ObjectHideFlags: 0
