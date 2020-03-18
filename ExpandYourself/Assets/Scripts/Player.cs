@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     // cached references
     Rigidbody2D myRigidbody;
+    SceneLoader sceneLoader;
 
     // state variables
     Vector2 screenBounds;
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        sceneLoader = FindObjectOfType<SceneLoader>();
+
         // get components
         myRigidbody = GetComponent<Rigidbody2D>();
         
@@ -110,5 +113,6 @@ public class Player : MonoBehaviour
     private void Defeat()
     {
         Destroy(gameObject);
+        sceneLoader.LoadGameOverScene();
     }
 }
