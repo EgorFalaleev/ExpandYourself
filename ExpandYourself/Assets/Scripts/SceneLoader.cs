@@ -7,4 +7,9 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
     }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 }

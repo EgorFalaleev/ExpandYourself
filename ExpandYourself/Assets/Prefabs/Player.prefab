@@ -143,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394ee89b4d14d084dbd9eacb390728ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
   mouseMovementSpeed: 1
+  moveSpeed: 5
   mouseMovement: 0
-  slowDownFactor: 0.3
+  scalePerFrameDifferenceFactor: 0.0005
+  scaleToLose: 0.1
