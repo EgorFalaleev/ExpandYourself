@@ -76,9 +76,23 @@ public class Player : MonoBehaviour
 
     public void IncreaseSize(float sizeIncreasingValue)
     {
-        transform.localScale = new Vector2(transform.localScale.x + sizeIncreasingValue / transform.localScale.x,
-                                           transform.localScale.y + sizeIncreasingValue / transform.localScale.y);
+        float scaleRelation = sizeIncreasingValue / transform.localScale.x;
 
+        if (scaleRelation >= 10)
+        {
+            transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 10,
+                                               transform.localScale.y + scaleRelation / 10);
+        }
+        else if (scaleRelation < 10 && scaleRelation >= 1)
+        {
+            transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 3f,
+                                               transform.localScale.y + scaleRelation / 3f);
+        }
+        else
+        {
+            transform.localScale = new Vector2(transform.localScale.x + scaleRelation,
+                                               transform.localScale.y + scaleRelation);
+        }
         UpdatePlayerBounds();
         HandleMoveSpeed();
     }
