@@ -126,6 +126,10 @@ public class Player : MonoBehaviour
     private void Defeat()
     {
         Destroy(gameObject);
+
+        // reset game session (score)
+        FindObjectOfType<GameSession>().ResetGameSession();
+
         sceneLoader.LoadGameOverScene();
     }
 }

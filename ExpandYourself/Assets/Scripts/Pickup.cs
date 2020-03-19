@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
     // configuration parameters
     [SerializeField] float scaleToDestroy = 0.01f;
     [SerializeField] float scalePerFrameDifferenceFactor = 0.001f;
+    [SerializeField] int pointsPerPickup = 1;
 
     // cached references
     Player player;
@@ -31,8 +32,9 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        FindObjectOfType<GameSession>().AddToScore(pointsPerPickup);
         player.IncreaseSize(circleScale.x);
+        Destroy(gameObject);
     }
 
     private void Shrink()
