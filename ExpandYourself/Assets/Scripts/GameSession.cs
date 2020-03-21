@@ -7,7 +7,12 @@ public class GameSession : MonoBehaviour
 {
     // configuration parameters
     [SerializeField] Text scoreText;
+    [SerializeField] Text multiplierText;
     [SerializeField] int score = 0;
+
+    // state variables
+    private int multiplier = 1;
+    private int pickupsCollectedWithoutMissing = 0;
 
     private void Awake()
     {
@@ -20,18 +25,41 @@ public class GameSession : MonoBehaviour
 
     void Start()
     {
+        // set texts
         scoreText.text = score.ToString();
+        multiplierText.text = "x" + multiplier.ToString();
     }
 
     public void AddToScore(int amount)
     {
+        pickupsCollectedWithoutMissing++;
+        UpdateMultiplier();
+
         // update score information
-        score += amount;
+        score += amount * multiplier;
         scoreText.text = score.ToString();
     }
 
     public void ResetGameSession()
     {
         Destroy(gameObject);
+    }
+
+    private void UpdateMultiplier()
+    {
+        // increment multiplier and reset pickup counter
+        if (pickupsCollectedWithoutMissing == 10)
+        {
+            multiplier++;
+            multiplierText.text = "x" + multiplier.ToString();
+            pickupsCollectedWithoutMissing = 0;
+        }
+    }
+
+    public void DecrementMultiplier()
+    {
+        if (multiplier <= 1) multiplier = 1;
+        else multiplier -= 1;
+        multiplierText.text = "x" + multiplier.ToString();
     }
 }

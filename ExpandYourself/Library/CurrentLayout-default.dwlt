@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 14002, y: 14042}
   vertical: 0
-  controlID: 58
+  controlID: 88
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 63
+  controlID: 89
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -391,9 +391,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 02edffff
-      m_LastClickedID: -4862
-      m_ExpandedIDs: 0aedffffd2effffffaefffff5af9ffff20faffff40faffff6cfbffff9e3600005a370000743700009637000020390000
+      m_SelectedIDs: 583c0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: b0e8ffffe6e8ffff6cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -453,9 +453,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.12636007, y: 1.2921807, z: -17.577736}
+    m_Target: {x: 433.7785, y: 239.91316, z: -146.98412}
     speed: 2
-    m_Value: {x: 0.12636007, y: 1.2921807, z: -17.577736}
+    m_Value: {x: 433.7785, y: 239.91316, z: -146.98412}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -505,9 +505,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.678695
+    m_Target: 661.7892
     speed: 2
-    m_Value: 7.678695
+    m_Value: 661.7892
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -597,19 +597,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\programming\Unity\ExpandYourself.git\ExpandYourself
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 82340000
-    m_LastClickedID: 13442
+    m_SelectedIDs: 80340000
+    m_LastClickedID: 13440
     m_ExpandedIDs: 000000007834000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0

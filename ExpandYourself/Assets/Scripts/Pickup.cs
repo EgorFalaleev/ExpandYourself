@@ -46,6 +46,7 @@ public class Pickup : MonoBehaviour
         if (transform.localScale.x < scaleToDestroy || transform.localScale.y < scaleToDestroy)
         {
             Destroy(gameObject);
+            FindObjectOfType<GameSession>().DecrementMultiplier();
         }
     }
 }
