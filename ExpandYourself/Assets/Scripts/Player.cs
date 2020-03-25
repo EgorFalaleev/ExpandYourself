@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
                                          Mathf.Clamp(transform.position.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight));
 
         // change player's velocity depending on the input
-        myRigidbody.velocity = new Vector2(xMovement * moveSpeed, yMovement * moveSpeed);
+        myRigidbody.velocity = new Vector2(xMovement * moveSpeed * Time.deltaTime, yMovement * moveSpeed * Time.deltaTime);
 
         Shrink();
 
@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
             // convert touch position to world coordinates
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
-            transform.position = Vector2.Lerp(transform.position, touchPosition, touchMovementSpeed);
+            transform.position = Vector2.Lerp(transform.position, touchPosition, touchMovementSpeed * Time.deltaTime);
         }
     }
 
@@ -96,7 +96,8 @@ public class Player : MonoBehaviour
 
     private void Shrink()
     {
-        transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor, transform.localScale.y - scalePerFrameDifferenceFactor);
+        transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
+                                           transform.localScale.y - scalePerFrameDifferenceFactor * Time.deltaTime);
 
         UpdatePlayerBounds();
         HandleMoveSpeed();

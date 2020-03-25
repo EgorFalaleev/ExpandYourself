@@ -112,4 +112,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleToDestroy: 0.1
-  scalePerFrameDifferenceFactor: 0.0025
+  scalePerFrameDifferenceFactor: 0.5
+  pointsPerPickup: 1

@@ -39,7 +39,8 @@ public class Pickup : MonoBehaviour
 
     private void Shrink()
     {
-        transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor, transform.localScale.y - scalePerFrameDifferenceFactor);
+        transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
+                                           transform.localScale.y - scalePerFrameDifferenceFactor * Time.deltaTime);
         circleScale = transform.localScale;
 
         // destroy pickup if it becomes too small
