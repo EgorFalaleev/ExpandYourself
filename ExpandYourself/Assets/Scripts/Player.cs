@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     [SerializeField] float scaleToLose = 0.2f;
 
     // cached references
-    Rigidbody2D myRigidbody;
     SceneLoader sceneLoader;
 
     // state variables
@@ -24,9 +23,6 @@ public class Player : MonoBehaviour
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
 
-        // get components
-        myRigidbody = GetComponent<Rigidbody2D>();
-        
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
@@ -41,14 +37,13 @@ public class Player : MonoBehaviour
     private void Move()
     {
         // get input axis
-        float xMovement = Input.GetAxis("Horizontal");
-        float yMovement = Input.GetAxis("Vertical");
+        float xMovement = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
+        float yMovement = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
 
-        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth),
-                                         Mathf.Clamp(transform.position.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight));
+        float newXPosition = Mathf.Clamp(transform.position.x + xMovement, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
+        float newYPosition = Mathf.Clamp(transform.position.y + yMovement, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
 
-        // change player's velocity depending on the input
-        myRigidbody.velocity = new Vector2(xMovement * moveSpeed * Time.deltaTime, yMovement * moveSpeed * Time.deltaTime);
+        transform.position = new Vector2(newXPosition, newYPosition);
 
         Shrink();
 
@@ -109,7 +104,7 @@ public class Player : MonoBehaviour
     private void HandleMoveSpeed()
     {
         // slow the player down
-        moveSpeed = Mathf.Exp(2.5f - transform.localScale.x) + 1;
+        moveSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
         touchMovementSpeed = Mathf.Exp(-transform.localScale.x) / 10f;
         if (touchMovementSpeed > 1) touchMovementSpeed = 1;
     }
