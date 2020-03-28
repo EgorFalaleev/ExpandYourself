@@ -12,8 +12,9 @@ public class GameSession : MonoBehaviour
 
     // state variables
     private int multiplier = 1;
-    private int pickupsCollectedWithoutMissing = 0;
     private int score = 0;
+    private float difficulty = 0;
+    public int pickupsCollectedWithoutMissing = 0;
 
     private void Awake()
     {
@@ -24,11 +25,17 @@ public class GameSession : MonoBehaviour
         else DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
         // set texts
         scoreText.text = score.ToString();
         multiplierText.text = "x" + multiplier.ToString();
+    }
+
+    private void Update()
+    {
+        difficulty = Time.time;
+        Debug.Log(difficulty);
     }
 
     public void AddToScore(int amount)

@@ -12,6 +12,7 @@ public class Pickup : MonoBehaviour
 
     // cached references
     Player player;
+    GameSession gameSession;
 
     // state variables
     private Vector2 circleScale;
@@ -20,6 +21,7 @@ public class Pickup : MonoBehaviour
     {
         // get the player object
         player = FindObjectOfType<Player>();
+        gameSession = FindObjectOfType<GameSession>();
 
         // set pickup scale
         transform.localScale = FindObjectOfType<PickupGenerator>().GetPickupScale();
@@ -33,7 +35,7 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        FindObjectOfType<GameSession>().AddToScore(pointsPerPickup);
+        gameSession.AddToScore(pointsPerPickup);
         player.IncreaseSize(circleScale.x);
         Destroy(gameObject);
     }
@@ -48,8 +50,8 @@ public class Pickup : MonoBehaviour
         if (transform.localScale.x < scaleToDestroy || transform.localScale.y < scaleToDestroy)
         {
             Destroy(gameObject);
-            FindObjectOfType<GameSession>().DecrementMultiplier();
             player.DecreaseSize(valueToDecreaseIfNotCollected);
+            gameSession.pickupsCollectedWithoutMissing = 0;
         }
     }
 }
