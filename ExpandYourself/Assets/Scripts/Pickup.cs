@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] float scaleToDestroy = 0.01f;
     [SerializeField] float scalePerFrameDifferenceFactor = 0.001f;
     [SerializeField] int pointsPerPickup = 1;
+    [SerializeField] float valueToDecreaseIfNotCollected = 0.2f;
 
     // cached references
     Player player;
@@ -48,6 +49,7 @@ public class Pickup : MonoBehaviour
         {
             Destroy(gameObject);
             FindObjectOfType<GameSession>().DecrementMultiplier();
+            player.DecreaseSize(valueToDecreaseIfNotCollected);
         }
     }
 }

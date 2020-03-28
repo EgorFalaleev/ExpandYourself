@@ -56,11 +56,4 @@ public class GameSession : MonoBehaviour
             pickupsCollectedWithoutMissing = 0;
         }
     }
-
-    public void DecrementMultiplier()
-    {
-        if (multiplier <= 1) multiplier = 1;
-        else multiplier -= 1;
-        multiplierText.text = "x" + multiplier.ToString();
-    }
 }

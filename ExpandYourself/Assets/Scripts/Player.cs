@@ -82,6 +82,14 @@ public class Player : MonoBehaviour
         HandleMoveSpeed();
     }
 
+    public void DecreaseSize(float valueToDecrease)
+    {
+        transform.localScale = new Vector2(transform.localScale.x - valueToDecrease, transform.localScale.y - valueToDecrease);
+
+        UpdatePlayerBounds();
+        HandleMoveSpeed();
+    }
+
     private void UpdatePlayerBounds()
     {
         // update player bounds
