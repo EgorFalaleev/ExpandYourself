@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             // convert touch position to world coordinates
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
-            transform.position = Vector2.Lerp(transform.position, touchPosition, touchMovementSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, touchPosition, touchMovementSpeed * Time.deltaTime);
         }
     }
 
@@ -105,8 +105,7 @@ public class Player : MonoBehaviour
     {
         // slow the player down
         moveSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
-        touchMovementSpeed = Mathf.Exp(-transform.localScale.x) / 10f;
-        if (touchMovementSpeed > 1) touchMovementSpeed = 1;
+        touchMovementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
     }
 
     private void Defeat()
