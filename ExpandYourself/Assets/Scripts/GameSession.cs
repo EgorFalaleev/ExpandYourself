@@ -11,11 +11,12 @@ public class GameSession : MonoBehaviour
     [SerializeField] int pointsToIncreaseMultiplier = 10;
     [SerializeField] float increasingDifficultyValuePlayer = 0.5f;
     [SerializeField] float increasingDifficultyValuePickup = 0.3f;
+    [SerializeField] float decreasingTimeBetweenSpawnsValue = 0.3f;
 
     // state variables
     private int multiplier = 1;
     private int score = 0;
-    public int pickupsCollectedWithoutMissing = 0;
+    private int pickupsCollectedWithoutMissing = 0;
 
     private void Awake()
     {
@@ -48,6 +49,11 @@ public class GameSession : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void ResetNumberOfPickupsCollected()
+    {
+        pickupsCollectedWithoutMissing = 0;
+    }
+
     private void UpdateMultiplier()
     {
         // increment multiplier and reset pickup counter
@@ -67,6 +73,9 @@ public class GameSession : MonoBehaviour
             // increase difficulty by speeding up the player's and pickup's shrinking speed
             FindObjectOfType<Player>().AcceleratePlayerShrinking(increasingDifficultyValuePlayer);
             FindObjectOfType<Pickup>().AcceleratePickupShrinking(increasingDifficultyValuePickup);
+
+            // decrease time between pickups spawns
+            FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);
         }
     }
 }

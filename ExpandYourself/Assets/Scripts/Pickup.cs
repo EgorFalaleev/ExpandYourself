@@ -51,7 +51,7 @@ public class Pickup : MonoBehaviour
         {
             Destroy(gameObject);
             player.DecreaseSize(valueToDecreaseIfNotCollected);
-            gameSession.pickupsCollectedWithoutMissing = 0;
+            gameSession.ResetNumberOfPickupsCollected();
         }
     }
 

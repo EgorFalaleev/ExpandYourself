@@ -14,7 +14,7 @@ public class PickupGenerator : MonoBehaviour
     private Vector2 screenBounds;
     private Vector2 pickupScale;
 
-    void Start()
+    private void Start()
     {
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -48,5 +48,10 @@ public class PickupGenerator : MonoBehaviour
     public Vector2 GetPickupScale()
     {
         return pickupScale;
+    }
+
+    public void DecreaseTimeBetweenSpawns(float value)
+    {
+        timeBetweenSpawns -= value;
     }
 }

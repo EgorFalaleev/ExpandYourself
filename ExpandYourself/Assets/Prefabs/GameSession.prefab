@@ -226,7 +226,7 @@ MonoBehaviour:
   pointsToIncreaseMultiplier: 7
   increasingDifficultyValuePlayer: 0.35
   increasingDifficultyValuePickup: 0.25
-  pickupsCollectedWithoutMissing: 0
+  decreasingTimeBetweenSpawnsValue: 0.3
 --- !u!1 &5657679857376353477
 GameObject:
   m_ObjectHideFlags: 0

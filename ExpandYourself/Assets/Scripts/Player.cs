@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
     {
         float scaleRelation = sizeIncreasingValue / transform.localScale.x;
 
+        // increase size by different value depending on the scale relation between pickup and player
         if (scaleRelation >= 10)
         {
             transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 10,
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector2(transform.localScale.x + scaleRelation,
                                                transform.localScale.y + scaleRelation);
         }
+
         UpdatePlayerBounds();
         HandleMoveSpeed();
     }
@@ -111,7 +113,7 @@ public class Player : MonoBehaviour
 
     private void HandleMoveSpeed()
     {
-        // slow the player down
+        // speed-size relation
         moveSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
         touchMovementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
     }
