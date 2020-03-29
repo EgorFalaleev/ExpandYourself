@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -84, y: -90}
-  m_SizeDelta: {x: 151.8, y: 47.5}
+  m_AnchoredPosition: {x: -101.75, y: -149}
+  m_SizeDelta: {x: 187.2, y: 75.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1121220469
 CanvasRenderer:
@@ -65,11 +65,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e667c827ec24ded4d964c034a65b0815, type: 3}
-    m_FontSize: 25
+    m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 50
+    m_MaxSize: 70
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -223,7 +223,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 5657679857376353499}
   multiplierText: {fileID: 1121220468}
-  pointsToIncreaseMultiplier: 10
+  pointsToIncreaseMultiplier: 7
+  increasingDifficultyValuePlayer: 0.35
+  increasingDifficultyValuePickup: 0.25
+  pickupsCollectedWithoutMissing: 0
 --- !u!1 &5657679857376353477
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,8 +261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -84, y: -43}
-  m_SizeDelta: {x: 151.8, y: 62.6}
+  m_AnchoredPosition: {x: -120.799805, y: -61.399902}
+  m_SizeDelta: {x: 225.3, y: 99.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5657679857376353498
 CanvasRenderer:
@@ -289,11 +292,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e667c827ec24ded4d964c034a65b0815, type: 3}
-    m_FontSize: 40
+    m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
-    m_MaxSize: 50
+    m_MaxSize: 90
     m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1

@@ -54,4 +54,9 @@ public class Pickup : MonoBehaviour
             gameSession.pickupsCollectedWithoutMissing = 0;
         }
     }
+
+    public void AcceleratePickupShrinking(float value)
+    {
+        scalePerFrameDifferenceFactor += value;
+    }
 }

@@ -9,11 +9,12 @@ public class GameSession : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text multiplierText;
     [SerializeField] int pointsToIncreaseMultiplier = 10;
+    [SerializeField] float increasingDifficultyValuePlayer = 0.5f;
+    [SerializeField] float increasingDifficultyValuePickup = 0.3f;
 
     // state variables
     private int multiplier = 1;
     private int score = 0;
-    private float difficulty = 0;
     public int pickupsCollectedWithoutMissing = 0;
 
     private void Awake()
@@ -30,12 +31,6 @@ public class GameSession : MonoBehaviour
         // set texts
         scoreText.text = score.ToString();
         multiplierText.text = "x" + multiplier.ToString();
-    }
-
-    private void Update()
-    {
-        difficulty = Time.time;
-        Debug.Log(difficulty);
     }
 
     public void AddToScore(int amount)
@@ -60,7 +55,18 @@ public class GameSession : MonoBehaviour
         {
             multiplier++;
             multiplierText.text = "x" + multiplier.ToString();
+            IncreaseDifficulty();
             pickupsCollectedWithoutMissing = 0;
+        }
+    }
+
+    private void IncreaseDifficulty()
+    {
+        if (multiplier == 3 || multiplier == 7)
+        {
+            // increase difficulty by speeding up the player's and pickup's shrinking speed
+            FindObjectOfType<Player>().AcceleratePlayerShrinking(increasingDifficultyValuePlayer);
+            FindObjectOfType<Pickup>().AcceleratePickupShrinking(increasingDifficultyValuePickup);
         }
     }
 }

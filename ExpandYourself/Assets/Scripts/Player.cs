@@ -125,4 +125,9 @@ public class Player : MonoBehaviour
 
         sceneLoader.LoadGameOverScene();
     }
+
+    public void AcceleratePlayerShrinking(float value)
+    {
+        scalePerFrameDifferenceFactor += value;
+    }
 }
