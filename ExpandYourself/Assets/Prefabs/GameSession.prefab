@@ -224,8 +224,8 @@ MonoBehaviour:
   scoreText: {fileID: 5657679857376353499}
   multiplierText: {fileID: 1121220468}
   pointsToIncreaseMultiplier: 7
-  increasingDifficultyValuePlayer: 0.35
-  increasingDifficultyValuePickup: 0.25
+  playerDecreasingSizeValue: 0.25
+  pickupDecreasingSizeValue: 0.15
   decreasingTimeBetweenSpawnsValue: 0.3
 --- !u!1 &5657679857376353477
 GameObject:

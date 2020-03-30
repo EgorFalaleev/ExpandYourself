@@ -13,15 +13,18 @@ public class Player : MonoBehaviour
 
     // cached references
     SceneLoader sceneLoader;
+    BoxCollider2D playerCollider;
 
     // state variables
     Vector2 screenBounds;
     float playerWidth;
     float playerHeight;
+    bool dragging;
 
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
+        playerCollider = GetComponent<BoxCollider2D>();
 
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -54,8 +57,26 @@ public class Player : MonoBehaviour
 
             // convert touch position to world coordinates
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            Vector2 touchPosition2D = new Vector2(touchPosition.x, touchPosition.y);
 
-            transform.position = Vector2.MoveTowards(transform.position, touchPosition, touchMovementSpeed * Time.deltaTime);
+            // throw a ray from the touch position
+            RaycastHit2D hit = Physics2D.Raycast(touchPosition2D, Vector2.zero);
+           
+            // if the ray collides with player, activate the dragging state
+            if (hit.collider == playerCollider)
+            {
+                dragging = true;
+            }
+           
+            // while dragging state is active move player to the touch position
+            if (dragging)
+            {
+                Vector3 normalizedPosition = new Vector3(touchPosition.x, touchPosition.y, transform.position.z);
+                transform.position = Vector2.MoveTowards(transform.position, normalizedPosition, touchMovementSpeed * Time.deltaTime);
+            }
+
+            // when player releases finger deactivate dragging
+            if (touch.phase == TouchPhase.Ended) dragging = false;
         }
     }
 

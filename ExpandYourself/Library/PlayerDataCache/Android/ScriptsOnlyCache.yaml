@@ -362,7 +362,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 8dc057d68268854a9603c20af61728b5
+      Hash: 82d998d27200ce146b9ec4b331c89656
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameSession
@@ -542,7 +542,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: d85fc25d29ac08df8b3ea0963d0a92d7
+      Hash: d4e405e2e825e30b477d275a4d1ce382
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Pickup

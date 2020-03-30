@@ -9,8 +9,8 @@ public class GameSession : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text multiplierText;
     [SerializeField] int pointsToIncreaseMultiplier = 10;
-    [SerializeField] float increasingDifficultyValuePlayer = 0.5f;
-    [SerializeField] float increasingDifficultyValuePickup = 0.3f;
+    [SerializeField] float playerDecreasingSizeValue = 0.5f;
+    [SerializeField] float pickupDecreasingSizeValue = 0.3f;
     [SerializeField] float decreasingTimeBetweenSpawnsValue = 0.3f;
 
     // state variables
@@ -71,8 +71,8 @@ public class GameSession : MonoBehaviour
         if (multiplier == 3 || multiplier == 7)
         {
             // increase difficulty by speeding up the player's and pickup's shrinking speed
-            FindObjectOfType<Player>().AcceleratePlayerShrinking(increasingDifficultyValuePlayer);
-            FindObjectOfType<Pickup>().AcceleratePickupShrinking(increasingDifficultyValuePickup);
+            FindObjectOfType<Player>().AcceleratePlayerShrinking(playerDecreasingSizeValue);
+            FindObjectOfType<Pickup>().AcceleratePickupShrinking(pickupDecreasingSizeValue);
 
             // decrease time between pickups spawns
             FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);

@@ -145,5 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchMovementSpeed: 1
   moveSpeed: 5
-  scalePerFrameDifferenceFactor: 0.1
+  scalePerFrameDifferenceFactor: 0.2
   scaleToLose: 0.1

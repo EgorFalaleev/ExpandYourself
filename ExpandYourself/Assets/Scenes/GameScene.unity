@@ -465,7 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickupPrefab: {fileID: 682326587428186144, guid: 2b280cb152f196c42b86a3cc2bda2bce,
     type: 3}
-  timeBetweenSpawns: 2
+  timeBetweenSpawns: 1.5
   minPickupScale: 0.75
   maxPickupScale: 1.5
 --- !u!1001 &849262168857293371
@@ -479,6 +479,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 849262168879002502, guid: 6e7ead3b3194a2b47ab174960f568e5e,
+        type: 3}
+      propertyPath: scalePerFrameDifferenceFactor
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 849262168879002503, guid: 6e7ead3b3194a2b47ab174960f568e5e,
         type: 3}
