@@ -5,9 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // configuration parameters
-    [Range (0,1)]
-    [SerializeField] float touchMovementSpeed = 1f;
-    [SerializeField] float moveSpeed = 5f;
     [SerializeField] float scalePerFrameDifferenceFactor = 0.0005f;
     [SerializeField] float scaleToLose = 0.2f;
 
@@ -19,6 +16,7 @@ public class Player : MonoBehaviour
     Vector2 screenBounds;
     float playerWidth;
     float playerHeight;
+    float movementSpeed;
     bool dragging;
 
     void Start()
@@ -39,17 +37,6 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        // get input axis
-        float xMovement = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-        float yMovement = Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed;
-
-        float newXPosition = Mathf.Clamp(transform.position.x + xMovement, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
-        float newYPosition = Mathf.Clamp(transform.position.y + yMovement, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
-
-        transform.position = new Vector2(newXPosition, newYPosition);
-
-        Shrink();
-
         // touch movement
         if (Input.touchCount > 0)
         {
@@ -60,10 +47,10 @@ public class Player : MonoBehaviour
             Vector2 touchPosition2D = new Vector2(touchPosition.x, touchPosition.y);
 
             // throw a ray from the touch position
-            RaycastHit2D hit = Physics2D.Raycast(touchPosition2D, Vector2.zero);
+            RaycastHit2D touchHit = Physics2D.Raycast(touchPosition2D, Vector2.zero);
            
             // if the ray collides with player, activate the dragging state
-            if (hit.collider == playerCollider)
+            if (touchHit.collider == playerCollider)
             {
                 dragging = true;
             }
@@ -72,12 +59,14 @@ public class Player : MonoBehaviour
             if (dragging)
             {
                 Vector3 normalizedPosition = new Vector3(touchPosition.x, touchPosition.y, transform.position.z);
-                transform.position = Vector2.MoveTowards(transform.position, normalizedPosition, touchMovementSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, normalizedPosition, movementSpeed * Time.deltaTime);
             }
 
             // when player releases finger deactivate dragging
             if (touch.phase == TouchPhase.Ended) dragging = false;
         }
+
+        Shrink();
     }
 
     public void IncreaseSize(float sizeIncreasingValue)
@@ -135,8 +124,7 @@ public class Player : MonoBehaviour
     private void HandleMoveSpeed()
     {
         // speed-size relation
-        moveSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
-        touchMovementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
+        movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
     }
 
     private void Defeat()
@@ -152,5 +140,16 @@ public class Player : MonoBehaviour
     public void AcceleratePlayerShrinking(float value)
     {
         scalePerFrameDifferenceFactor += value;
+    }
+
+    // mouse movement
+    private void OnMouseDrag()
+    {
+        // convert mouse position from screen space to world space
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // move player to the mouse position
+        Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
+        transform.position = Vector2.MoveTowards(transform.position, mousePosition, movementSpeed * Time.deltaTime);
     }
 }
