@@ -549,6 +549,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5657679857277236553, guid: 4b711e763a5da914db0f0538593e6785,
+        type: 3}
+      propertyPath: playerDecreasingSizeValue
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657679857277236553, guid: 4b711e763a5da914db0f0538593e6785,
+        type: 3}
+      propertyPath: pickupDecreasingSizeValue
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5657679857277236553, guid: 4b711e763a5da914db0f0538593e6785,
+        type: 3}
+      propertyPath: decreasingTimeBetweenSpawnsValue
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5657679857277236554, guid: 4b711e763a5da914db0f0538593e6785,
         type: 3}
       propertyPath: m_LocalPosition.x

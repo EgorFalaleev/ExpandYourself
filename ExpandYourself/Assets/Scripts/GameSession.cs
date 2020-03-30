@@ -68,14 +68,11 @@ public class GameSession : MonoBehaviour
 
     private void IncreaseDifficulty()
     {
-        if (multiplier == 3 || multiplier == 7)
-        {
-            // increase difficulty by speeding up the player's and pickup's shrinking speed
-            FindObjectOfType<Player>().AcceleratePlayerShrinking(playerDecreasingSizeValue);
-            FindObjectOfType<Pickup>().AcceleratePickupShrinking(pickupDecreasingSizeValue);
-
-            // decrease time between pickups spawns
-            FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);
-        }
+         // increase difficulty by speeding up the player's and pickup's shrinking speed
+         FindObjectOfType<Player>().AcceleratePlayerShrinking(playerDecreasingSizeValue);
+         FindObjectOfType<Pickup>().AcceleratePickupShrinking(pickupDecreasingSizeValue);
+         
+         // decrease time between pickups spawns
+         FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);
     }
 }
