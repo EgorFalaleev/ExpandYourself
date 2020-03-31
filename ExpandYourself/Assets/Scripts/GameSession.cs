@@ -8,7 +8,9 @@ public class GameSession : MonoBehaviour
     // configuration parameters
     [SerializeField] Text scoreText;
     [SerializeField] Text multiplierText;
+    [SerializeField] Text maxSizeText;
     [SerializeField] int pointsToIncreaseMultiplier = 10;
+    [SerializeField] int maxSizeBonus = 10;
     [SerializeField] float playerDecreasingSizeValue = 0.5f;
     [SerializeField] float pickupDecreasingSizeValue = 0.3f;
     [SerializeField] float decreasingTimeBetweenSpawnsValue = 0.3f;
@@ -25,6 +27,9 @@ public class GameSession : MonoBehaviour
         // singleton pattern - only one game session can be in the game
         if (numberOfGameSessions > 1) Destroy(gameObject);
         else DontDestroyOnLoad(gameObject);
+
+        // disable max size text on the start
+        maxSizeText.enabled = false;
     }
 
     private void Start()
@@ -32,6 +37,7 @@ public class GameSession : MonoBehaviour
         // set texts
         scoreText.text = score.ToString();
         multiplierText.text = "x" + multiplier.ToString();
+        maxSizeText.enabled = false;
     }
 
     public void AddToScore(int amount)
@@ -74,5 +80,23 @@ public class GameSession : MonoBehaviour
          
          // decrease time between pickups spawns
          FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);
+    }
+
+    public void ProcessMaxSizeReached()
+    {
+        // add bonus points and show text
+        score += maxSizeBonus;
+        StartCoroutine(ShowMaxSizeText());
+    }
+
+    private IEnumerator ShowMaxSizeText()
+    {
+        // show text then destroy it
+        maxSizeText.text = $"Max size reached! + {maxSizeBonus} points!";
+        maxSizeText.enabled = true;
+        
+        yield return new WaitForSeconds(2f);
+
+        maxSizeText.enabled = false;
     }
 }

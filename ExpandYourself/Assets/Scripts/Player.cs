@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     // configuration parameters
     [SerializeField] float scalePerFrameDifferenceFactor = 0.0005f;
     [SerializeField] float scaleToLose = 0.2f;
+    [SerializeField] float maxSize = 3f;
 
     // cached references
     SceneLoader sceneLoader;
@@ -90,6 +91,15 @@ public class Player : MonoBehaviour
                                                transform.localScale.y + scaleRelation);
         }
 
+        // if player reaches max size, don't increase more 
+        if (transform.localScale.x >= maxSize)
+        {
+            transform.localScale = new Vector2(maxSize, maxSize);
+
+            // add bonus points
+            FindObjectOfType<GameSession>().ProcessMaxSizeReached();
+        }
+
         UpdatePlayerBounds();
         HandleMoveSpeed();
     }
@@ -124,7 +134,7 @@ public class Player : MonoBehaviour
     private void HandleMoveSpeed()
     {
         // speed-size relation
-        movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
+        movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 2);
     }
 
     private void Defeat()

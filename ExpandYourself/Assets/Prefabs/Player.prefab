@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 394ee89b4d14d084dbd9eacb390728ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touchMovementSpeed: 1
-  moveSpeed: 5
-  scalePerFrameDifferenceFactor: 0.2
+  scalePerFrameDifferenceFactor: 0.15
   scaleToLose: 0.1
+  maxSize: 3
