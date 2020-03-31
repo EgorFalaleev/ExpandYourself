@@ -8,9 +8,10 @@ public class GameSession : MonoBehaviour
     // configuration parameters
     [SerializeField] Text scoreText;
     [SerializeField] Text multiplierText;
-    [SerializeField] Text maxSizeText;
+    [SerializeField] Text bonusSizeText;
+    [SerializeField] Text bonusSizeIncreasedText;
     [SerializeField] int pointsToIncreaseMultiplier = 10;
-    [SerializeField] int maxSizeBonus = 10;
+    [SerializeField] int bonusSizePoints = 10;
     [SerializeField] float playerDecreasingSizeValue = 0.5f;
     [SerializeField] float pickupDecreasingSizeValue = 0.3f;
     [SerializeField] float decreasingTimeBetweenSpawnsValue = 0.3f;
@@ -28,8 +29,9 @@ public class GameSession : MonoBehaviour
         if (numberOfGameSessions > 1) Destroy(gameObject);
         else DontDestroyOnLoad(gameObject);
 
-        // disable max size text on the start
-        maxSizeText.enabled = false;
+        // disable bonus size text on the start
+        bonusSizeText.enabled = false;
+        bonusSizeIncreasedText.enabled = false;
     }
 
     private void Start()
@@ -37,7 +39,6 @@ public class GameSession : MonoBehaviour
         // set texts
         scoreText.text = score.ToString();
         multiplierText.text = "x" + multiplier.ToString();
-        maxSizeText.enabled = false;
     }
 
     public void AddToScore(int amount)
@@ -82,21 +83,24 @@ public class GameSession : MonoBehaviour
          FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);
     }
 
-    public void ProcessMaxSizeReached()
+    public void ProcessBonusSizeReached()
     {
         // add bonus points and show text
-        score += maxSizeBonus;
-        StartCoroutine(ShowMaxSizeText());
+        score += bonusSizePoints;
+        bonusSizePoints += 2;
+        StartCoroutine(ShowBonusSizeText());
     }
 
-    private IEnumerator ShowMaxSizeText()
+    private IEnumerator ShowBonusSizeText()
     {
         // show text then destroy it
-        maxSizeText.text = $"Max size reached! + {maxSizeBonus} points!";
-        maxSizeText.enabled = true;
-        
+        bonusSizeText.text = $"Bonus size reached! + {bonusSizePoints} points!";
+        bonusSizeText.enabled = true;
+        bonusSizeIncreasedText.enabled = true;
+
         yield return new WaitForSeconds(2f);
 
-        maxSizeText.enabled = false;
+        bonusSizeText.enabled = false;
+        bonusSizeIncreasedText.enabled = false;
     }
 }

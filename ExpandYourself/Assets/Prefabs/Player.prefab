@@ -145,4 +145,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scalePerFrameDifferenceFactor: 0.15
   scaleToLose: 0.1
-  maxSize: 3
+  bonusSize: 2.25
+  bonusSizeIncreasingValue: 0.25

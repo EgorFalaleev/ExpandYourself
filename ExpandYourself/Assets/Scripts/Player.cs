@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     // configuration parameters
     [SerializeField] float scalePerFrameDifferenceFactor = 0.0005f;
     [SerializeField] float scaleToLose = 0.2f;
-    [SerializeField] float maxSize = 3f;
+    [SerializeField] float bonusSize = 3f;
+    [SerializeField] float bonusSizeIncreasingValue = 0.25f;
 
     // cached references
     SceneLoader sceneLoader;
@@ -70,6 +69,17 @@ public class Player : MonoBehaviour
         Shrink();
     }
 
+    // mouse movement
+    private void OnMouseDrag()
+    {
+        // convert mouse position from screen space to world space
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // move player to the mouse position
+        Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
+        transform.position = Vector2.MoveTowards(transform.position, mousePosition, movementSpeed * Time.deltaTime);
+    }
+
     public void IncreaseSize(float sizeIncreasingValue)
     {
         float scaleRelation = sizeIncreasingValue / transform.localScale.x;
@@ -91,13 +101,16 @@ public class Player : MonoBehaviour
                                                transform.localScale.y + scaleRelation);
         }
 
-        // if player reaches max size, don't increase more 
-        if (transform.localScale.x >= maxSize)
+        // if player reaches bonus size, don't increase more 
+        if (transform.localScale.x >= bonusSize)
         {
-            transform.localScale = new Vector2(maxSize, maxSize);
+            transform.localScale = new Vector2(bonusSize, bonusSize);
 
             // add bonus points
-            FindObjectOfType<GameSession>().ProcessMaxSizeReached();
+            FindObjectOfType<GameSession>().ProcessBonusSizeReached();
+
+            // increase bonus size
+            bonusSize += bonusSizeIncreasingValue;
         }
 
         UpdatePlayerBounds();
@@ -150,16 +163,5 @@ public class Player : MonoBehaviour
     public void AcceleratePlayerShrinking(float value)
     {
         scalePerFrameDifferenceFactor += value;
-    }
-
-    // mouse movement
-    private void OnMouseDrag()
-    {
-        // convert mouse position from screen space to world space
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // move player to the mouse position
-        Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
-        transform.position = Vector2.MoveTowards(transform.position, mousePosition, movementSpeed * Time.deltaTime);
     }
 }
