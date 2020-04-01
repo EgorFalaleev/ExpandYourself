@@ -5,17 +5,17 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     // configuration parameters
-    [SerializeField] float scaleToDestroy = 0.01f;
-    [SerializeField] float scalePerFrameDifferenceFactor = 0.001f;
-    [SerializeField] int pointsPerPickup = 1;
-    [SerializeField] float valueToDecreaseIfNotCollected = 0.2f;
+    [SerializeField] protected float scaleToDestroy = 0.01f;
+    [SerializeField] protected float scalePerFrameDifferenceFactor = 0.001f;
+    [SerializeField] private int pointsPerPickup = 1;
+    [SerializeField] private float valueToDecreaseIfNotCollected = 0.2f;
 
     // cached references
-    Player player;
-    GameSession gameSession;
+    protected Player player;
+    protected GameSession gameSession;
 
     // state variables
-    private Vector2 circleScale;
+    protected Vector2 circleScale;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class Pickup : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Shrink()
+    protected virtual void Shrink()
     {
         transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
                                            transform.localScale.y - scalePerFrameDifferenceFactor * Time.deltaTime);

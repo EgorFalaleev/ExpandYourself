@@ -87,8 +87,8 @@ public class GameSession : MonoBehaviour
     {
         // add bonus points and show text
         score += bonusSizePoints;
-        bonusSizePoints += 2;
         StartCoroutine(ShowBonusSizeText());
+        bonusSizePoints += 2;
     }
 
     private IEnumerator ShowBonusSizeText()

@@ -147,7 +147,7 @@ public class Player : MonoBehaviour
     private void HandleMoveSpeed()
     {
         // speed-size relation
-        movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 2);
+        movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1.5f);
     }
 
     private void Defeat()

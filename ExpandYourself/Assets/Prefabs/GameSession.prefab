@@ -385,9 +385,9 @@ MonoBehaviour:
   bonusSizeIncreasedText: {fileID: 197376145269265068}
   pointsToIncreaseMultiplier: 7
   bonusSizePoints: 10
-  playerDecreasingSizeValue: 0.15
+  playerDecreasingSizeValue: 0.1
   pickupDecreasingSizeValue: 0.05
-  decreasingTimeBetweenSpawnsValue: 0.2
+  decreasingTimeBetweenSpawnsValue: 0.1
 --- !u!1 &5657679857376353477
 GameObject:
   m_ObjectHideFlags: 0
