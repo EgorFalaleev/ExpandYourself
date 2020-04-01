@@ -463,8 +463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c00a63fbd0fb62848ae28e1bbab8033b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupPrefab: {fileID: 682326587428186144, guid: 2b280cb152f196c42b86a3cc2bda2bce,
-    type: 3}
+  pickupPrefab:
+  - {fileID: 682326587428186144, guid: 2b280cb152f196c42b86a3cc2bda2bce, type: 3}
+  - {fileID: 3515116345445927853, guid: 820484402a759c841989886b4d7e84d7, type: 3}
   timeBetweenSpawns: 1.5
   minPickupScale: 0.75
   maxPickupScale: 1.5

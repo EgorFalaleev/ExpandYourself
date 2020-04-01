@@ -5,10 +5,13 @@ using UnityEngine;
 public class PickupGenerator : MonoBehaviour
 {
     // configuration parameters
-    [SerializeField] GameObject pickupPrefab;
+    [SerializeField] GameObject[] pickupPrefab;
     [SerializeField] float timeBetweenSpawns = 1f;
     [SerializeField] float minPickupScale = 0.75f;
     [SerializeField] float maxPickupScale = 2f;
+    [SerializeField] int neutralPickupProbability = 80;
+    [Range (80, 100)]
+    [SerializeField] int negativePickupProbability = 100;
 
     // state variables
     private Vector2 screenBounds;
@@ -24,8 +27,18 @@ public class PickupGenerator : MonoBehaviour
 
     private void SpawnPickup()
     {
+        // generate probability for each pickup collected
+        int pickupIndex = 0;
+        int probability = Random.Range(0, 100);
+
+        if (probability <= neutralPickupProbability) pickupIndex = 0;
+        else if (probability > neutralPickupProbability && probability <= negativePickupProbability) pickupIndex = 1;
+
+        Debug.Log(probability);
+
+
         // spawn a pickup
-        GameObject pickup = Instantiate(pickupPrefab) as GameObject;
+        GameObject pickup = Instantiate(pickupPrefab[pickupIndex]) as GameObject;
 
         float randomScale = Random.Range(minPickupScale, maxPickupScale);
 
