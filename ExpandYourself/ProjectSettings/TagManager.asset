@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Neutral Pickup
-  - Positive Pickup
-  - Negative Pickup
+  - Slow Pickup
+  - Speed Pickup
   layers:
   - Default
   - TransparentFX

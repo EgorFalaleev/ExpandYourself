@@ -1,14 +1,20 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class SlowPickup : Pickup
+public class SpeedPickup : Pickup
 {
     // configuration parameters
-    [SerializeField] float slowDownValue = -1f;
-    [SerializeField] float timeForSlowDown = 3f;
+    [SerializeField] float speedInfluenceValue = -1f;
+    [SerializeField] float pickupActiveTime = 3f;
 
     // state variables
     bool isCollected;
+
+    private void Awake()
+    {
+        // set speed influence
+        if (tag == "Speed Pickup") speedInfluenceValue = Mathf.Abs(speedInfluenceValue);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -20,11 +26,11 @@ public class SlowPickup : Pickup
 
     private IEnumerator SlowPlayerForTime()
     {
-        player.HandleSpeedPickup(true, slowDownValue);
+        player.HandleSpeedPickup(true, speedInfluenceValue);
 
-        yield return new WaitForSeconds(timeForSlowDown);
+        yield return new WaitForSeconds(pickupActiveTime);
 
-        player.HandleSpeedPickup(false, slowDownValue);
+        player.HandleSpeedPickup(false, speedInfluenceValue);
 
         Destroy(gameObject);
     }

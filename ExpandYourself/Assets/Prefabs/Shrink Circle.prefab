@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4846382082956241936}
   - component: {fileID: -4251821684564554329}
   m_Layer: 0
-  m_Name: Red Circle
-  m_TagString: Negative Pickup
+  m_Name: Shrink Circle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

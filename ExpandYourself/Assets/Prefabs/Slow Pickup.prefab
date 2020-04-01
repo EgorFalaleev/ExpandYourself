@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 339569077088789620}
   m_Layer: 0
   m_Name: Slow Pickup
-  m_TagString: Untagged
+  m_TagString: Slow Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,5 +127,5 @@ MonoBehaviour:
   scalePerFrameDifferenceFactor: 0.5
   pointsPerPickup: 1
   valueToDecreaseIfNotCollected: 0.2
-  slowDownValue: -3
+  speedInfluenceValue: -1
   timeForSlowDown: 3

@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - PickupGenerator
     - Player
     - SceneLoader
+    - SpeedPickup
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -99,6 +100,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 58
       Script: {instanceID: 0}
+    - Class: 60
+      Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
     - Class: 81
@@ -127,6 +130,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12836}
     - Class: 114
       Script: {instanceID: 13108}
+    - Class: 114
+      Script: {instanceID: 14612}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -527,7 +532,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 6a4cf5ba823f09a655f7d84e5e8f53d7
+      Hash: 57cbf82bfa01d04010aa35912c668248
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PickupGenerator
@@ -663,6 +668,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: ed914ef8fc6ad6d748b960e01c5d17ae
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpeedPickup
   platform: 13
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
