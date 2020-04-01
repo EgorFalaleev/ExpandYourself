@@ -466,11 +466,10 @@ MonoBehaviour:
   pickupPrefab:
   - {fileID: 682326587428186144, guid: 2b280cb152f196c42b86a3cc2bda2bce, type: 3}
   - {fileID: 3515116345445927853, guid: 820484402a759c841989886b4d7e84d7, type: 3}
+  - {fileID: 6973988537371000740, guid: 9fea12420aae17c46aa40ba63c4e862b, type: 3}
   timeBetweenSpawns: 1.5
   minPickupScale: 0.75
   maxPickupScale: 1.5
-  neutralPickupProbability: 80
-  negativePickupProbability: 100
 --- !u!1001 &849262168857293371
 PrefabInstance:
   m_ObjectHideFlags: 0

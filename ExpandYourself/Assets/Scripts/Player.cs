@@ -9,15 +9,17 @@ public class Player : MonoBehaviour
     [SerializeField] float bonusSizeIncreasingValue = 0.25f;
 
     // cached references
-    SceneLoader sceneLoader;
-    BoxCollider2D playerCollider;
+    private SceneLoader sceneLoader;
+    private BoxCollider2D playerCollider;
 
     // state variables
-    Vector2 screenBounds;
-    float playerWidth;
-    float playerHeight;
-    float movementSpeed;
-    bool dragging;
+    private Vector2 screenBounds;
+    private float playerWidth;
+    private float playerHeight;
+    private float movementSpeed;
+    private float movementSpeedPickupInfluence;
+    private bool dragging;
+    private bool changeSpeedTaken;
 
     void Start()
     {
@@ -148,6 +150,9 @@ public class Player : MonoBehaviour
     {
         // speed-size relation
         movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1.5f);
+
+        // if taken pickup that changes speed add its influence
+        if (changeSpeedTaken) movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1.5f) + movementSpeedPickupInfluence;
     }
 
     private void Defeat()
@@ -163,5 +168,11 @@ public class Player : MonoBehaviour
     public void AcceleratePlayerShrinking(float value)
     {
         scalePerFrameDifferenceFactor += value;
+    }
+
+    public void HandleSpeedPickup(bool effectState, float value)
+    {
+        changeSpeedTaken = effectState;
+        movementSpeedPickupInfluence = value;
     }
 }

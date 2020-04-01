@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PickupGenerator : MonoBehaviour
@@ -9,13 +8,13 @@ public class PickupGenerator : MonoBehaviour
     [SerializeField] float timeBetweenSpawns = 1f;
     [SerializeField] float minPickupScale = 0.75f;
     [SerializeField] float maxPickupScale = 2f;
-    [Range (80, 100)]
-    [SerializeField] int negativePickupProbability = 100;
 
     // state variables
     private Vector2 screenBounds;
     private Vector2 pickupScale;
-    private int neutralPickupProbability = 100;
+    private int neutralPickupProbability;
+    private int negativePickupProbability;
+    private int slowPickupProbability; 
 
     private void Start()
     {
@@ -32,10 +31,11 @@ public class PickupGenerator : MonoBehaviour
         // generate probability for each pickup collected
         int pickupIndex = 0;
         int probability = Random.Range(0, 100);
-
+        
         // select pickup type depending on probability
         if (probability <= neutralPickupProbability) pickupIndex = 0;
         else if (probability > neutralPickupProbability && probability <= negativePickupProbability) pickupIndex = 1;
+        else if (probability > negativePickupProbability && probability <= slowPickupProbability) pickupIndex = 2;
 
         // spawn a pickup
         GameObject pickup = Instantiate(pickupPrefab[pickupIndex]) as GameObject;
@@ -78,15 +78,22 @@ public class PickupGenerator : MonoBehaviour
                 break;
             case 2:
                 neutralPickupProbability = 90;
+                negativePickupProbability = 100;
                 break;
             case 3:
                 neutralPickupProbability = 80;
+                negativePickupProbability = 90;
+                slowPickupProbability = 100;
                 break;
             case 4:
                 neutralPickupProbability = 70;
+                negativePickupProbability = 85;
+                slowPickupProbability = 100;
                 break;
             default:
                 neutralPickupProbability = 65;
+                negativePickupProbability = 85;
+                slowPickupProbability = 100;
                 break;
         }
     }
