@@ -87,6 +87,7 @@ public class GameSession : MonoBehaviour
     {
         // add bonus points and show text
         score += bonusSizePoints;
+        scoreText.text = score.ToString();
         StartCoroutine(ShowBonusSizeText());
         bonusSizePoints += 2;
     }
@@ -102,5 +103,10 @@ public class GameSession : MonoBehaviour
 
         bonusSizeText.enabled = false;
         bonusSizeIncreasedText.enabled = false;
+    }
+
+    public int GetMultiplier()
+    {
+        return multiplier;
     }
 }

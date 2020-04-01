@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - GameSession
+    - NegativePickup
     - Pickup
     - PickupGenerator
     - Player
@@ -50,11 +51,11 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11176}
+      Script: {instanceID: 11174}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11344}
     - Class: 114
-      Script: {instanceID: 11386}
+      Script: {instanceID: 11384}
     - Class: 114
       Script: {instanceID: 11802}
     - Class: 114
@@ -105,11 +106,13 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11176}
+      Script: {instanceID: 11174}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11344}
     - Class: 114
-      Script: {instanceID: 11748}
+      Script: {instanceID: 11746}
+    - Class: 114
+      Script: {instanceID: 11790}
     - Class: 114
       Script: {instanceID: 11802}
     - Class: 114
@@ -164,11 +167,11 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11176}
+      Script: {instanceID: 11174}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11344}
     - Class: 114
-      Script: {instanceID: 11386}
+      Script: {instanceID: 11384}
     - Class: 114
       Script: {instanceID: 11802}
     - Class: 114
@@ -368,6 +371,12 @@ ScriptsOnlyBuild:
     className: GameSession
   - hash:
       serializedVersion: 2
+      Hash: 2ed6911d7b04d91d723511428a58f955
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NegativePickup
+  - hash:
+      serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
@@ -518,7 +527,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 6e0925e46313f21826a386d374b81df6
+      Hash: 6a4cf5ba823f09a655f7d84e5e8f53d7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PickupGenerator
