@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private float movementSpeed;
     private float movementSpeedPickupInfluence;
     private bool dragging;
-    private bool changeSpeedTaken;
+    private bool changeSpeedTaken = false;
 
     void Start()
     {
@@ -148,11 +148,11 @@ public class Player : MonoBehaviour
 
     private void HandleMoveSpeed()
     {
-        // speed-size relation
-        movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1.5f);
-
         // if taken pickup that changes speed add its influence
-        if (changeSpeedTaken) movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1.5f) + movementSpeedPickupInfluence;
+        if (changeSpeedTaken) movementSpeed = movementSpeedPickupInfluence;
+
+        // speed-size relation
+        else movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1.5f);
     }
 
     private void Defeat()

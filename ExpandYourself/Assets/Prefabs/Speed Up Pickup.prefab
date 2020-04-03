@@ -127,5 +127,6 @@ MonoBehaviour:
   scalePerFrameDifferenceFactor: 0.5
   pointsPerPickup: 1
   valueToDecreaseIfNotCollected: 0.2
-  speedInfluenceValue: -3
-  pickupActiveTime: 3
+  slowSpeed: 1
+  increasedSpeed: 15
+  pickupActiveTime: 1.5

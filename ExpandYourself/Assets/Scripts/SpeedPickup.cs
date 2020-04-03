@@ -4,7 +4,8 @@ using UnityEngine;
 public class SpeedPickup : Pickup
 {
     // configuration parameters
-    [SerializeField] float speedInfluenceValue = -1f;
+    [SerializeField] float slowSpeed = 1f;
+    [SerializeField] float increasedSpeed = 7f;
     [SerializeField] float pickupActiveTime = 3f;
 
     // state variables
@@ -13,24 +14,27 @@ public class SpeedPickup : Pickup
     private void Awake()
     {
         // set speed influence
-        if (tag == "Speed Pickup") speedInfluenceValue = Mathf.Abs(speedInfluenceValue);
+        if (tag == "Speed Pickup") slowSpeed = Mathf.Abs(slowSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // change the object state to collected, process speed decreasing
         isCollected = true;
-        StartCoroutine(SlowPlayerForTime());
+        StartCoroutine(ChangePlayerSpeed());
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    private IEnumerator SlowPlayerForTime()
+    private IEnumerator ChangePlayerSpeed()
     {
-        player.HandleSpeedPickup(true, speedInfluenceValue);
+        // change speed depending on the type of the pickup collected
+        if (tag == "Speed Pickup") player.HandleSpeedPickup(true, increasedSpeed);
+        else player.HandleSpeedPickup(true, slowSpeed);
 
         yield return new WaitForSeconds(pickupActiveTime);
 
-        player.HandleSpeedPickup(false, speedInfluenceValue);
+        if (tag == "Speed Pickup") player.HandleSpeedPickup(false, increasedSpeed);
+        else player.HandleSpeedPickup(false, slowSpeed);
 
         Destroy(gameObject);
     }
