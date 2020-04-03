@@ -28,13 +28,13 @@ ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut
 activity#com.unity3d.player.UnityPlayerActivity
 ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:5-12:16
 	android:screenOrientation
-		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:111-149
+		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:111-154
 	android:launchMode
-		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:150-181
+		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:155-186
 	android:hardwareAccelerated
-		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:364-399
+		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:369-404
 	android:configChanges
-		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:182-363
+		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:187-368
 	android:theme
 		ADDED from D:\programming\Unity\ExpandYourself.git\ExpandYourself\Temp\gradleOut\unityLibrary\src\main\AndroidManifest.xml:5:69-110
 	android:name
