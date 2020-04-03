@@ -49,6 +49,20 @@ public class PickupGenerator : MonoBehaviour
                                                 Random.Range(screenBounds.y - randomScale, -screenBounds.y + randomScale));
         pickup.transform.localScale = new Vector2(randomScale, randomScale);
         pickupScale = pickup.transform.localScale;
+
+        // if bonus pickup was instantiated, instantiate neutral pickup
+        if (pickupIndex > 0)
+        {
+            GameObject neutralPickup = Instantiate(pickupPrefab[0]) as GameObject;
+
+            float pickupRandomScale = Random.Range(minPickupScale, maxPickupScale);
+
+            // place a pickup on a random position within the screen and make its size random
+            neutralPickup.transform.position = new Vector2(Random.Range(screenBounds.x - randomScale, -screenBounds.x + randomScale),
+                                                    Random.Range(screenBounds.y - randomScale, -screenBounds.y + randomScale));
+            neutralPickup.transform.localScale = new Vector2(randomScale, randomScale);
+            pickupScale = neutralPickup.transform.localScale;
+        }
     }
 
     IEnumerator SpawnCoroutine()
