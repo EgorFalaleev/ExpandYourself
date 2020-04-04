@@ -28,7 +28,8 @@ public class Player : MonoBehaviour
 
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-
+        Debug.Log(screenBounds.x);
+        Debug.Log(screenBounds.y);
         UpdatePlayerBounds();
     }
 
@@ -47,6 +48,10 @@ public class Player : MonoBehaviour
             // convert touch position to world coordinates
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             Vector2 touchPosition2D = new Vector2(touchPosition.x, touchPosition.y);
+
+            // clamp touches inside game screen
+            touchPosition.x = Mathf.Clamp(touchPosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
+            touchPosition.y = Mathf.Clamp(touchPosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
 
             // throw a ray from the touch position
             RaycastHit2D touchHit = Physics2D.Raycast(touchPosition2D, Vector2.zero);
@@ -76,6 +81,10 @@ public class Player : MonoBehaviour
     {
         // convert mouse position from screen space to world space
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // clamp mouse inside game screen
+        mousePosition.x = Mathf.Clamp(mousePosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
+        mousePosition.y = Mathf.Clamp(mousePosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
 
         // move player to the mouse position
         Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
