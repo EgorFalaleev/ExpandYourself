@@ -28,8 +28,7 @@ public class Player : MonoBehaviour
 
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        Debug.Log(screenBounds.x);
-        Debug.Log(screenBounds.y);
+
         UpdatePlayerBounds();
     }
 
