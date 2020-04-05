@@ -1,7 +1,9 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - DisplayGameStats
     - GameSession
+    - GameStatsHolder
     - NegativePickup
     - Pickup
     - PickupGenerator
@@ -60,13 +62,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 12212}
+      Script: {instanceID: 11972}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 12214}
     - Class: 114
-      Script: {instanceID: 12726}
+      Script: {instanceID: 12464}
     - Class: 114
-      Script: {instanceID: 13110}
+      Script: {instanceID: 12728}
+    - Class: 114
+      Script: {instanceID: 12760}
+    - Class: 114
+      Script: {instanceID: 13114}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -123,17 +129,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11804}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 11972}
     - Class: 114
-      Script: {instanceID: 12618}
+      Script: {instanceID: 12464}
     - Class: 114
-      Script: {instanceID: 12672}
+      Script: {instanceID: 12620}
     - Class: 114
-      Script: {instanceID: 12726}
+      Script: {instanceID: 12674}
     - Class: 114
-      Script: {instanceID: 12838}
+      Script: {instanceID: 12728}
     - Class: 114
-      Script: {instanceID: 13110}
+      Script: {instanceID: 12842}
+    - Class: 114
+      Script: {instanceID: 13114}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -184,19 +192,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11830}
     - Class: 114
-      Script: {instanceID: 12212}
+      Script: {instanceID: 12214}
     - Class: 114
-      Script: {instanceID: 12444}
+      Script: {instanceID: 12446}
     - Class: 114
-      Script: {instanceID: 12458}
+      Script: {instanceID: 12460}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 12464}
     - Class: 114
-      Script: {instanceID: 12726}
+      Script: {instanceID: 12728}
     - Class: 114
-      Script: {instanceID: 12896}
+      Script: {instanceID: 12900}
     - Class: 114
-      Script: {instanceID: 13110}
+      Script: {instanceID: 13114}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -420,6 +428,12 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameStatsHolder
+  - hash:
+      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -562,6 +576,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: 5309b93eb361d401c0c76795ee6383d6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DisplayGameStats
   - hash:
       serializedVersion: 2
       Hash: d4e405e2e825e30b477d275a4d1ce382

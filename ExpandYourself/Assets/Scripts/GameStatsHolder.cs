@@ -6,7 +6,7 @@ public class GameStatsHolder : MonoBehaviour
     public static GameStatsHolder Instance;
 
     // state variables
-    private int score; 
+    private int score;
 
     private void Awake()
     {
@@ -27,6 +27,12 @@ public class GameStatsHolder : MonoBehaviour
     public void SetScore(int score)
     {
         this.score = score;
+
+        // set high score 
+        if (PlayerPrefs.GetInt("HighScore") < score)
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
     }
 
     public int GetScore()
