@@ -52,6 +52,8 @@ public class GameSession : MonoBehaviour
 
     public void ResetGameSession()
     {
+        SaveGameStats();
+
         Destroy(gameObject);
     }
 
@@ -107,5 +109,11 @@ public class GameSession : MonoBehaviour
     public int GetMultiplier()
     {
         return multiplier;
+    }
+
+    public void SaveGameStats()
+    {
+        // save score
+        GameStatsHolder.Instance.SetScore(score);
     }
 }

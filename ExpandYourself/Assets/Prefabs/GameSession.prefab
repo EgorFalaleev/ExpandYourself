@@ -457,6 +457,7 @@ MonoBehaviour:
   multiplierText: {fileID: 1121220468}
   bonusSizeText: {fileID: 3353779079402571214}
   bonusSizeIncreasedText: {fileID: 197376145269265068}
+  finalScoreText: {fileID: 0}
   pointsToIncreaseMultiplier: 7
   bonusSizePoints: 10
   playerDecreasingSizeValue: 0.1

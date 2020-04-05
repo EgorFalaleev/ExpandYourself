@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     // cached references
     private SceneLoader sceneLoader;
+    private GameSession gameSession;
     private BoxCollider2D playerCollider;
 
     // state variables
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
+        gameSession = FindObjectOfType<GameSession>();
         playerCollider = GetComponent<BoxCollider2D>();
 
         // get screen bounds
@@ -117,7 +119,7 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector2(bonusSize, bonusSize);
 
             // add bonus points
-            FindObjectOfType<GameSession>().ProcessBonusSizeReached();
+            gameSession.ProcessBonusSizeReached();
 
             // increase bonus size
             bonusSize += bonusSizeIncreasingValue;
@@ -165,12 +167,12 @@ public class Player : MonoBehaviour
 
     private void Defeat()
     {
-        Destroy(gameObject);
-
         // reset game session (score)
-        FindObjectOfType<GameSession>().ResetGameSession();
+        gameSession.ResetGameSession();
 
         sceneLoader.LoadGameOverScene();
+
+        Destroy(gameObject);
     }
 
     public void AcceleratePlayerShrinking(float value)
