@@ -44,7 +44,12 @@ public class GameSession : MonoBehaviour
         // set texts
         scoreText.text = score.ToString();
         multiplierText.text = "x" + multiplier.ToString();
+
+        // get number of total pickups collected
         totalPickupsCollected = PlayerPrefs.GetInt("TotalPickups");
+
+        // get volume settings
+        pickupCollectedVolume = PlayerPrefs.GetFloat("VolumeOnOff");
     }
 
     public void AddToScore(int amount)
@@ -129,11 +134,5 @@ public class GameSession : MonoBehaviour
         // save score and number of pickups
         GameStatsHolder.Instance.SetScore(score);
         GameStatsHolder.Instance.SetTotalPickups(totalPickupsCollected);
-    }
-
-    public void HandleSounds(bool isTurnedOn)
-    {
-        if (isTurnedOn) pickupCollectedVolume = 0.5f;
-        else pickupCollectedVolume = 0f;
     }
 }
