@@ -130,4 +130,10 @@ public class GameSession : MonoBehaviour
         GameStatsHolder.Instance.SetScore(score);
         GameStatsHolder.Instance.SetTotalPickups(totalPickupsCollected);
     }
+
+    public void HandleSounds(bool isTurnedOn)
+    {
+        if (isTurnedOn) pickupCollectedVolume = 0.5f;
+        else pickupCollectedVolume = 0f;
+    }
 }
