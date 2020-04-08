@@ -7,6 +7,7 @@ public class GameStatsHolder : MonoBehaviour
 
     // state variables
     private int score;
+    private int totalPickups;
 
     private void Awake()
     {
@@ -33,6 +34,13 @@ public class GameStatsHolder : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", score);
         }
+    }
+
+    public void SetTotalPickups(int number)
+    {
+        totalPickups = number;
+
+        PlayerPrefs.SetInt("TotalPickups", totalPickups);
     }
 
     public int GetScore()

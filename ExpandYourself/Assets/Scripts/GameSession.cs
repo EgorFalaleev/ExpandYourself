@@ -5,20 +5,26 @@ using UnityEngine.UI;
 public class GameSession : MonoBehaviour
 {
     // configuration parameters
+    [Header("Text references")]
     [SerializeField] Text scoreText;
     [SerializeField] Text multiplierText;
     [SerializeField] Text bonusSizeText;
     [SerializeField] Text bonusSizeIncreasedText;
+    [Header("Pickup settings")]
     [SerializeField] int pointsToIncreaseMultiplier = 10;
     [SerializeField] int bonusSizePoints = 10;
     [SerializeField] float playerDecreasingSizeValue = 0.5f;
     [SerializeField] float pickupDecreasingSizeValue = 0.3f;
     [SerializeField] float decreasingTimeBetweenSpawnsValue = 0.3f;
+    [SerializeField] AudioClip[] pickupCollectedSounds;
+    [Range(0, 1)]
+    [SerializeField] float pickupCollectedVolume = 0.5f;
 
     // state variables
     private int multiplier = 1;
     private int score = 0;
     private int pickupsCollectedWithoutMissing = 0;
+    private int totalPickupsCollected = 0;
 
     private void Awake()
     {
@@ -38,11 +44,18 @@ public class GameSession : MonoBehaviour
         // set texts
         scoreText.text = score.ToString();
         multiplierText.text = "x" + multiplier.ToString();
+        totalPickupsCollected = PlayerPrefs.GetInt("TotalPickups");
     }
 
     public void AddToScore(int amount)
     {
+        // update stats info
+        totalPickupsCollected++;
         pickupsCollectedWithoutMissing++;
+
+        // play pickup collected sound
+        AudioSource.PlayClipAtPoint(pickupCollectedSounds[pickupsCollectedWithoutMissing - 1], Camera.main.transform.position, pickupCollectedVolume);
+
         UpdateMultiplier();
 
         // update score information
@@ -113,7 +126,8 @@ public class GameSession : MonoBehaviour
 
     public void SaveGameStats()
     {
-        // save score
+        // save score and number of pickups
         GameStatsHolder.Instance.SetScore(score);
+        GameStatsHolder.Instance.SetTotalPickups(totalPickupsCollected);
     }
 }

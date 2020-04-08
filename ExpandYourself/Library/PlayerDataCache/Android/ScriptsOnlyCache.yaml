@@ -112,6 +112,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -386,7 +388,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 7b81d4ed1d88a233441d2814b4d56bea
+      Hash: ed2fc0e9bbfad41c87f68b17e3ea7854
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameSession
@@ -578,7 +580,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 5309b93eb361d401c0c76795ee6383d6
+      Hash: 4fb972884047ffeb28e5672fda9a1db7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DisplayGameStats
