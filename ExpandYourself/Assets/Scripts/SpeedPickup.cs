@@ -7,15 +7,11 @@ public class SpeedPickup : Pickup
     [SerializeField] float slowSpeed = 1f;
     [SerializeField] float increasedSpeed = 7f;
     [SerializeField] float pickupActiveTime = 3f;
+    [SerializeField] AudioClip speedUpSound;
+    [SerializeField] AudioClip speedDownSound;
 
     // state variables
     bool isCollected;
-
-    private void Awake()
-    {
-        // set speed influence
-        if (tag == "Speed Pickup") slowSpeed = Mathf.Abs(slowSpeed);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,8 +24,16 @@ public class SpeedPickup : Pickup
     private IEnumerator ChangePlayerSpeed()
     {
         // change speed depending on the type of the pickup collected
-        if (tag == "Speed Pickup") player.HandleSpeedPickup(true, increasedSpeed);
-        else player.HandleSpeedPickup(true, slowSpeed);
+        if (tag == "Speed Pickup")
+        {
+            player.HandleSpeedPickup(true, increasedSpeed);
+            AudioSource.PlayClipAtPoint(speedUpSound, Camera.main.transform.position, PlayerPrefs.GetFloat("VolumeOnOff", 0.5f));
+        }
+        else
+        {
+            player.HandleSpeedPickup(true, slowSpeed);
+            AudioSource.PlayClipAtPoint(speedDownSound, Camera.main.transform.position, PlayerPrefs.GetFloat("VolumeOnOff", 0.5f));
+        }
 
         yield return new WaitForSeconds(pickupActiveTime);
 
