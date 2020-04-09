@@ -116,3 +116,4 @@ MonoBehaviour:
   pointsPerPickup: 1
   valueToDecreaseIfNotCollected: 0.2
   decreasingValue: 0.5
+  negativePickupSound: {fileID: 8300000, guid: 2d8bf786570dec24eaf03a1c9832b788, type: 3}

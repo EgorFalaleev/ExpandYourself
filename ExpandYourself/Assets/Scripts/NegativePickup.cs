@@ -4,10 +4,12 @@ public class NegativePickup : Pickup
 {
     // configuration parameters
     [SerializeField] float decreasingValue = 0.5f;
+    [SerializeField] AudioClip negativePickupSound;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         player.DecreaseSize(decreasingValue);
+        AudioSource.PlayClipAtPoint(negativePickupSound, Camera.main.transform.position, PlayerPrefs.GetFloat("VolumeOnOff", 0.5f));
         Destroy(gameObject);
     }
 
