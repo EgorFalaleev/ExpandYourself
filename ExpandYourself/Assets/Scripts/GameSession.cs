@@ -49,7 +49,7 @@ public class GameSession : MonoBehaviour
         totalPickupsCollected = PlayerPrefs.GetInt("TotalPickups");
 
         // get volume settings
-        pickupCollectedVolume = PlayerPrefs.GetFloat("VolumeOnOff");
+        pickupCollectedVolume = PlayerPrefs.GetFloat("VolumeOnOff", 0.5f);
     }
 
     public void AddToScore(int amount)
