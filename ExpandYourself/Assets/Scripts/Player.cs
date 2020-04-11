@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] float scaleToLose = 0.2f;
     [SerializeField] float bonusSize = 3f;
     [SerializeField] float bonusSizeIncreasingValue = 0.25f;
+    [SerializeField] AudioClip loseSound;
 
     // cached references
     private SceneLoader sceneLoader;
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
     private float playerHeight;
     private float movementSpeed;
     private float movementSpeedPickupInfluence;
+    private bool defeated = false;
     private bool dragging;
     private bool changeSpeedTaken = false;
 
@@ -146,14 +149,17 @@ public class Player : MonoBehaviour
 
     private void Shrink()
     {
-        transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
-                                           transform.localScale.y - scalePerFrameDifferenceFactor * Time.deltaTime);
+        if (!defeated)
+        {
+            transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
+                                               transform.localScale.y - scalePerFrameDifferenceFactor * Time.deltaTime);
 
-        UpdatePlayerBounds();
-        HandleMoveSpeed();
+            UpdatePlayerBounds();
+            HandleMoveSpeed();
 
-        // lose if size is too small
-        if (transform.localScale.x < scaleToLose) Defeat();
+            // lose if size is too small
+            if (transform.localScale.x < scaleToLose) Defeat();
+        }
     }
 
     private void HandleMoveSpeed()
@@ -167,9 +173,20 @@ public class Player : MonoBehaviour
 
     private void Defeat()
     {
+        defeated = true;
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        StartCoroutine(PlaySoundThenDefeat());
+    }
+
+    private IEnumerator PlaySoundThenDefeat()
+    {
+        // play sound then wait 1 sec before loading game over scene
+        AudioSource.PlayClipAtPoint(loseSound, Camera.main.transform.position, PlayerPrefs.GetFloat("VolumeOnOff", 0.5f));
+        yield return new WaitForSeconds(1f);
+
         // reset game session (score)
         gameSession.ResetGameSession();
-
         sceneLoader.LoadGameOverScene();
 
         Destroy(gameObject);
