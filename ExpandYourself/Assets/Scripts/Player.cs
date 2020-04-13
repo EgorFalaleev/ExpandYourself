@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         float scaleRelation = sizeIncreasingValue / transform.localScale.x;
 
         // increase size by different value depending on the scale relation between pickup and player
-        if (scaleRelation >= 10)
+        if (scaleRelation >= 5)
         {
             transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 10,
                                                transform.localScale.y + scaleRelation / 10);
@@ -112,8 +112,8 @@ public class Player : MonoBehaviour
         }
         else
         {
-            transform.localScale = new Vector2(transform.localScale.x + scaleRelation,
-                                               transform.localScale.y + scaleRelation);
+            transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 1.5f,
+                                               transform.localScale.y + scaleRelation / 1.5f);
         }
 
         // if player reaches bonus size, don't increase more 
@@ -168,14 +168,17 @@ public class Player : MonoBehaviour
         if (changeSpeedTaken) movementSpeed = movementSpeedPickupInfluence;
 
         // speed-size relation
-        else movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1.5f);
+        else movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 0.5f);
     }
 
     private void Defeat()
     {
         defeated = true;
+
+        // disable player collider and image
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = false;
+
         StartCoroutine(PlaySoundThenDefeat());
     }
 

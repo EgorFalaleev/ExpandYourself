@@ -87,8 +87,9 @@ public class GameSession : MonoBehaviour
         {
             multiplier++;
             multiplierText.text = "x" + multiplier.ToString();
-            IncreaseDifficulty();
             pickupsCollectedWithoutMissing = 0;
+
+            if (multiplier <= 7) IncreaseDifficulty();
         }
     }
 
