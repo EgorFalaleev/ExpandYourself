@@ -119,7 +119,7 @@ public class GameSession : MonoBehaviour
         bonusSizeText.enabled = true;
         bonusSizeIncreasedText.enabled = true;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         bonusSizeText.enabled = false;
         bonusSizeIncreasedText.enabled = false;

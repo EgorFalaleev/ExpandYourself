@@ -145,6 +145,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scalePerFrameDifferenceFactor: 0.2
   scaleToLose: 0.1
-  bonusSize: 2.5
+  bonusSize: 2
   bonusSizeIncreasingValue: 0.25
   loseSound: {fileID: 8300000, guid: 29d607055df73844fa92401320c123e2, type: 3}
