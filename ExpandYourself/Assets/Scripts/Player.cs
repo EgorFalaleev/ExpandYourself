@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private SceneLoader sceneLoader;
     private GameSession gameSession;
     private BoxCollider2D playerCollider;
+    private Rigidbody2D playerRigidBody;
 
     // state variables
     private Vector2 screenBounds;
@@ -27,9 +28,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        // get components and references
         sceneLoader = FindObjectOfType<SceneLoader>();
         gameSession = FindObjectOfType<GameSession>();
         playerCollider = GetComponent<BoxCollider2D>();
+        playerRigidBody = GetComponent<Rigidbody2D>();
 
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -40,6 +43,12 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Input.touchCount > 0) RotateToTouchPosition();
+        else RotateToMousePosition();
     }
 
     private void Move()
@@ -93,6 +102,36 @@ public class Player : MonoBehaviour
         // move player to the mouse position
         Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
         transform.position = Vector2.MoveTowards(transform.position, mousePosition, movementSpeed * Time.deltaTime);
+    }
+
+    private void RotateToTouchPosition()
+    {
+        Touch touch = Input.GetTouch(0);
+
+        Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+
+        // 
+        Vector2 direction = touchPosition - playerRigidBody.position;
+
+        direction.Normalize();
+
+        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+
+        playerRigidBody.angularVelocity = -rotateAmount * 200f;
+    }
+
+    private void RotateToMousePosition()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // 
+        Vector2 direction = mousePosition - playerRigidBody.position;
+
+        direction.Normalize();
+
+        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+
+        playerRigidBody.angularVelocity = -rotateAmount * 200f;
     }
 
     public void IncreaseSize(float sizeIncreasingValue)

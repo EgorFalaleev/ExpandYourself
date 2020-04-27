@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 682326587428186145}
   - component: {fileID: 682326587428186156}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: Normal Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a37091f91b45eb14b922a1d1eee1c966, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6115b8592af0f464f9871c4266069873, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,9 +96,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.003835678, y: -0.06521869}
+  m_Offset: {x: -0.003835678, y: -0.011065245}
   serializedVersion: 2
-  m_Radius: 0.4690098
+  m_Radius: 0.52316326
 --- !u!114 &682326587428186156
 MonoBehaviour:
   m_ObjectHideFlags: 0
