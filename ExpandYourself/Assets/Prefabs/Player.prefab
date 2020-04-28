@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 849262168879002503}
   - component: {fileID: 849262168879002496}
   - component: {fileID: 849262168879002500}
-  - component: {fileID: 849262168879002501}
   - component: {fileID: 849262168879002502}
+  - component: {fileID: 419190676590236303}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -105,8 +105,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &849262168879002501
-BoxCollider2D:
+--- !u!114 &849262168879002502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849262168879002497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394ee89b4d14d084dbd9eacb390728ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scalePerFrameDifferenceFactor: 0.2
+  scaleToLose: 0.1
+  bonusSize: 1.75
+  bonusSizeIncreasingValue: 0.15
+  loseSound: {fileID: 8300000, guid: 29d607055df73844fa92401320c123e2, type: 3}
+--- !u!60 &419190676590236303
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,23 +145,10 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.28, y: 1.28}
-  m_EdgeRadius: 0
---- !u!114 &849262168879002502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849262168879002497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 394ee89b4d14d084dbd9eacb390728ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scalePerFrameDifferenceFactor: 0.2
-  scaleToLose: 0.1
-  bonusSize: 1.75
-  bonusSizeIncreasingValue: 0.15
-  loseSound: {fileID: 8300000, guid: 29d607055df73844fa92401320c123e2, type: 3}
+  m_Points:
+    m_Paths:
+    - - {x: 0.015098335, y: 0.7882124}
+      - {x: -0.6666667, y: -0.13084403}
+      - {x: -0.6666667, y: -0.6666667}
+      - {x: 0.67246693, y: -0.6585636}
+      - {x: 0.67476994, y: -0.14355241}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 542531224859426089}
   - component: {fileID: 542531224859426094}
   - component: {fileID: -5975622991248327348}
-  - component: {fileID: 1667180829209778954}
+  - component: {fileID: 4273013023616233364}
   m_Layer: 0
   m_Name: Speed Up Pickup
   m_TagString: Speed Pickup
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 532a44e7615264644b1bfa8db09395bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96bbafe6168fd084ea68acb5ee68155d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,8 +104,8 @@ MonoBehaviour:
   pickupActiveTime: 1.5
   speedUpSound: {fileID: 8300000, guid: 58cb9104f1762214bb52bf5070919ba3, type: 3}
   speedDownSound: {fileID: 8300000, guid: 2d8bf786570dec24eaf03a1c9832b788, type: 3}
---- !u!60 &1667180829209778954
-PolygonCollider2D:
+--- !u!58 &4273013023616233364
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -118,18 +118,5 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.5514436, y: -0.19628769}
-      - {x: -0.21191692, y: -0.62349653}
-      - {x: 0.5617318, y: -0.03463301}
-      - {x: 0.34566975, y: 0.61320496}
+  serializedVersion: 2
+  m_Radius: 0.5625453

@@ -110,13 +110,16 @@ public class Player : MonoBehaviour
 
         Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
-        // 
+        // find the direction vector 
         Vector2 direction = touchPosition - playerRigidBody.position;
 
+        // normalize vector so it has the length of 1
         direction.Normalize();
 
+        // get the height of normal vector
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
 
+        // the velocity of player sprite rotation
         playerRigidBody.angularVelocity = -rotateAmount * 200f;
     }
 
@@ -124,7 +127,6 @@ public class Player : MonoBehaviour
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // 
         Vector2 direction = mousePosition - playerRigidBody.position;
 
         direction.Normalize();
