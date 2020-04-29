@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     // cached references
     private SceneLoader sceneLoader;
     private GameSession gameSession;
-    private BoxCollider2D playerCollider;
+    private PolygonCollider2D playerCollider;
     private Rigidbody2D playerRigidBody;
 
     // state variables
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
         // get components and references
         sceneLoader = FindObjectOfType<SceneLoader>();
         gameSession = FindObjectOfType<GameSession>();
-        playerCollider = GetComponent<BoxCollider2D>();
+        playerCollider = GetComponent<PolygonCollider2D>();
         playerRigidBody = GetComponent<Rigidbody2D>();
 
         // get screen bounds
@@ -218,7 +218,7 @@ public class Player : MonoBehaviour
 
         // disable player collider and image
         GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<BoxCollider2D>().enabled = false;
+        playerCollider.enabled = false;
 
         StartCoroutine(PlaySoundThenDefeat());
     }
