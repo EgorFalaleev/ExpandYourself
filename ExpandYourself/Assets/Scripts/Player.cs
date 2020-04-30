@@ -45,12 +45,6 @@ public class Player : MonoBehaviour
         Move();
     }
 
-    private void FixedUpdate()
-    {
-        if (Input.touchCount > 0) RotateToTouchPosition();
-        else RotateToMousePosition();
-    }
-
     private void Move()
     {
         // touch movement
@@ -65,6 +59,8 @@ public class Player : MonoBehaviour
             // clamp touches inside game screen
             touchPosition.x = Mathf.Clamp(touchPosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
             touchPosition.y = Mathf.Clamp(touchPosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
+
+            RotateToTouchPosition(touchPosition);
 
             // throw a ray from the touch position
             RaycastHit2D touchHit = Physics2D.Raycast(touchPosition2D, Vector2.zero);
@@ -99,41 +95,36 @@ public class Player : MonoBehaviour
         mousePosition.x = Mathf.Clamp(mousePosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
         mousePosition.y = Mathf.Clamp(mousePosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
 
+        RotateToMousePosition(mousePosition);
+
         // move player to the mouse position
         Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
         transform.position = Vector2.MoveTowards(transform.position, mousePosition, movementSpeed * Time.deltaTime);
     }
 
-    private void RotateToTouchPosition()
+    private void RotateToTouchPosition(Vector2 touchPos)
     {
-        Touch touch = Input.GetTouch(0);
-
-        Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-
         // find the direction vector 
-        Vector2 direction = touchPosition - playerRigidBody.position;
+        Vector2 direction = new Vector2(touchPos.x - transform.position.x, touchPos.y - transform.position.y);
 
-        // normalize vector so it has the length of 1
-        direction.Normalize();
-
-        // get the height of normal vector
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-
-        // the velocity of player sprite rotation
-        playerRigidBody.angularVelocity = -rotateAmount * 200f;
+        // "look" at the touch
+        transform.up = direction;
     }
 
-    private void RotateToMousePosition()
+    private void RotateToMousePosition(Vector2 mousePos)
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float distanceBetweenMouseAndPlayer = Mathf.Sqrt(Mathf.Pow(mousePos.x - transform.position.x, 2)
+                                                       + Mathf.Pow(mousePos.y - transform.position.y, 2));
 
-        Vector2 direction = mousePosition - playerRigidBody.position;
+        // rotate only if mouse is not overlapping the player
+        if (distanceBetweenMouseAndPlayer > playerWidth && distanceBetweenMouseAndPlayer > playerHeight)
+        {
+            // find the direction vector
+            Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
-        direction.Normalize();
-
-        float rotateAmount = Vector3.Cross(direction, transform.up).z;
-
-        playerRigidBody.angularVelocity = -rotateAmount * 200f;
+            // "look" at the mouse
+            transform.up = direction;
+        }
     }
 
     public void IncreaseSize(float sizeIncreasingValue)
