@@ -9,6 +9,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] protected float scalePerFrameDifferenceFactor = 0.001f;
     [SerializeField] private int pointsPerPickup = 1;
     [SerializeField] private float valueToDecreaseIfNotCollected = 0.2f;
+    [SerializeField] GameObject collectedVFX;
 
     // cached references
     protected Player player;
@@ -38,6 +39,10 @@ public class Pickup : MonoBehaviour
         gameSession.AddToScore(pointsPerPickup);
         player.IncreaseSize(circleScale.x);
         Destroy(gameObject);
+
+        // create particles
+        GameObject normalPickupParticles = Instantiate(collectedVFX, transform.position, transform.rotation);
+        Destroy(normalPickupParticles, 1f);
     }
 
     protected virtual void Shrink()

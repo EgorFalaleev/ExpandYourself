@@ -115,3 +115,5 @@ MonoBehaviour:
   scalePerFrameDifferenceFactor: 0.5
   pointsPerPickup: 1
   valueToDecreaseIfNotCollected: 0.2
+  collectedVFX: {fileID: 5704655042383630325, guid: 8193d950755910042a68196ba23a35af,
+    type: 3}
