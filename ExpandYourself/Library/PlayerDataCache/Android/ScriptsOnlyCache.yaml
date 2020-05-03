@@ -153,6 +153,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
@@ -350,7 +354,7 @@ ScriptsOnlyBuild:
     className: Image
   - hash:
       serializedVersion: 2
-      Hash: 60dbcbb6c8b2aaecdab3b7745e70f5d5
+      Hash: b2c873474dab0ea4434e2ee4a532ff0d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SpeedPickup
@@ -446,7 +450,7 @@ ScriptsOnlyBuild:
     className: GameSession
   - hash:
       serializedVersion: 2
-      Hash: ecd9cd8c28ded17479728b3a0c7cf052
+      Hash: 732e886dd4d49b4fca8de9c08047eb10
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NegativePickup
@@ -644,7 +648,7 @@ ScriptsOnlyBuild:
     className: DisplayGameStats
   - hash:
       serializedVersion: 2
-      Hash: d4e405e2e825e30b477d275a4d1ce382
+      Hash: b70c0bf5d8afd0ccc9c015a59c1c8be9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Pickup

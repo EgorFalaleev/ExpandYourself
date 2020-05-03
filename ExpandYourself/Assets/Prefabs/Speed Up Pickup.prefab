@@ -99,6 +99,8 @@ MonoBehaviour:
   scalePerFrameDifferenceFactor: 0.5
   pointsPerPickup: 1
   valueToDecreaseIfNotCollected: 0.2
+  collectedVFX: {fileID: 5704655042383630325, guid: 6715337821baa244188458083b79a245,
+    type: 3}
   slowSpeed: 1
   increasedSpeed: 15
   pickupActiveTime: 1.5

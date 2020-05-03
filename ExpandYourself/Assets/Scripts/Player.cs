@@ -113,18 +113,11 @@ public class Player : MonoBehaviour
 
     private void RotateToMousePosition(Vector2 mousePos)
     {
-        float distanceBetweenMouseAndPlayer = Mathf.Sqrt(Mathf.Pow(mousePos.x - transform.position.x, 2)
-                                                       + Mathf.Pow(mousePos.y - transform.position.y, 2));
+        // find the direction vector
+        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
 
-        // rotate only if mouse is not overlapping the player
-        if (distanceBetweenMouseAndPlayer > playerWidth && distanceBetweenMouseAndPlayer > playerHeight)
-        {
-            // find the direction vector
-            Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
-
-            // "look" at the mouse
-            transform.up = direction;
-        }
+        // "look" at the mouse
+        transform.up = direction;
     }
 
     public void IncreaseSize(float sizeIncreasingValue)

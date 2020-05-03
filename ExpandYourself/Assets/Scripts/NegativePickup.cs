@@ -11,6 +11,10 @@ public class NegativePickup : Pickup
         player.DecreaseSize(decreasingValue);
         AudioSource.PlayClipAtPoint(negativePickupSound, Camera.main.transform.position, PlayerPrefs.GetFloat("VolumeOnOff", 0.5f));
         Destroy(gameObject);
+
+        // create particles
+        GameObject shrinkPickupParticles = Instantiate(collectedVFX, transform.position, transform.rotation);
+        Destroy(shrinkPickupParticles, 1f);
     }
 
     protected override void Shrink()

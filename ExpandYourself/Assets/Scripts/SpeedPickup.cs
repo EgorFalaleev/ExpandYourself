@@ -19,6 +19,10 @@ public class SpeedPickup : Pickup
         isCollected = true;
         StartCoroutine(ChangePlayerSpeed());
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        // create particles
+        GameObject speedPickupParticles = Instantiate(collectedVFX, transform.position, transform.rotation);
+        Destroy(speedPickupParticles, 1f);
     }
 
     private IEnumerator ChangePlayerSpeed()

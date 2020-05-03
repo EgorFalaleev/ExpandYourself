@@ -9,7 +9,7 @@ public class Pickup : MonoBehaviour
     [SerializeField] protected float scalePerFrameDifferenceFactor = 0.001f;
     [SerializeField] private int pointsPerPickup = 1;
     [SerializeField] private float valueToDecreaseIfNotCollected = 0.2f;
-    [SerializeField] GameObject collectedVFX;
+    [SerializeField] protected GameObject collectedVFX;
 
     // cached references
     protected Player player;

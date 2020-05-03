@@ -115,5 +115,7 @@ MonoBehaviour:
   scalePerFrameDifferenceFactor: 0.5
   pointsPerPickup: 1
   valueToDecreaseIfNotCollected: 0.2
+  collectedVFX: {fileID: 5704655042383630325, guid: a2bada05ac5ca924489300737583d9f9,
+    type: 3}
   decreasingValue: 0.5
   negativePickupSound: {fileID: 8300000, guid: 2d8bf786570dec24eaf03a1c9832b788, type: 3}
