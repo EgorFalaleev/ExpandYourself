@@ -466,11 +466,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1056872836, guid: 6e7ead3b3194a2b47ab174960f568e5e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056872839, guid: 6e7ead3b3194a2b47ab174960f568e5e, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 849262168879002497, guid: 6e7ead3b3194a2b47ab174960f568e5e,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 849262168879002502, guid: 6e7ead3b3194a2b47ab174960f568e5e,
+        type: 3}
+      propertyPath: deathVFX
+      value: 
+      objectReference: {fileID: 76676110366136367, guid: 664e6cf86319c754fb9b56cfb22f3bf4,
+        type: 3}
     - target: {fileID: 849262168879002503, guid: 6e7ead3b3194a2b47ab174960f568e5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -525,6 +539,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 849262168879002503, guid: 6e7ead3b3194a2b47ab174960f568e5e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 849262168879002503, guid: 6e7ead3b3194a2b47ab174960f568e5e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e7ead3b3194a2b47ab174960f568e5e, type: 3}

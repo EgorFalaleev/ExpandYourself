@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float bonusSize = 3f;
     [SerializeField] float bonusSizeIncreasingValue = 0.25f;
     [SerializeField] AudioClip loseSound;
+    [SerializeField] GameObject deathVFX;
 
     // cached references
     private SceneLoader sceneLoader;
@@ -203,6 +204,10 @@ public class Player : MonoBehaviour
         // disable player collider and image
         GetComponent<SpriteRenderer>().enabled = false;
         playerCollider.enabled = false;
+
+        // create death particles
+        GameObject deathParticles = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(deathParticles, 2.5f);
 
         StartCoroutine(PlaySoundThenDefeat());
     }
