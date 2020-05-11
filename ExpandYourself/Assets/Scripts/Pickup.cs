@@ -36,13 +36,13 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameSession.AddToScore(pointsPerPickup);
-        player.IncreaseSize(circleScale.x);
-        Destroy(gameObject);
-
         // create particles
         GameObject normalPickupParticles = Instantiate(collectedVFX, transform.position, transform.rotation);
         Destroy(normalPickupParticles, 1f);
+
+        gameSession.AddToScore(pointsPerPickup);
+        player.IncreaseSize(circleScale.x);
+        Destroy(gameObject);
     }
 
     protected virtual void Shrink()

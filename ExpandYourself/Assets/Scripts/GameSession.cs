@@ -85,6 +85,7 @@ public class GameSession : MonoBehaviour
         // increment multiplier and reset pickup counter
         if (pickupsCollectedWithoutMissing == pointsToIncreaseMultiplier)
         {
+            FindObjectOfType<NormalPickupParticlesHandler>().IncreaseNumberOfParticles();
             multiplier++;
             multiplierText.text = "x" + multiplier.ToString();
             pickupsCollectedWithoutMissing = 0;
