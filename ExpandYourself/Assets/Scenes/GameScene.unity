@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5657679857277236553, guid: 4b711e763a5da914db0f0538593e6785,
+        type: 3}
+      propertyPath: pointsToIncreaseMultiplier
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5657679857277236554, guid: 4b711e763a5da914db0f0538593e6785,
         type: 3}
       propertyPath: m_LocalPosition.x

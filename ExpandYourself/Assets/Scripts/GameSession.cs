@@ -25,6 +25,11 @@ public class GameSession : MonoBehaviour
     private int score = 0;
     private int pickupsCollectedWithoutMissing = 0;
     private int totalPickupsCollected = 0;
+    private Vector2 multiplierTextStartingPosition;
+    private Vector2 multiplierTextStartingScale;
+
+    // cached references
+    RectTransform multiplierTextTransform;
 
     private void Awake()
     {
@@ -41,6 +46,13 @@ public class GameSession : MonoBehaviour
 
     private void Start()
     {
+        // get reference to the multiplier text transform;
+        multiplierTextTransform = GameObject.Find("Multiplier Text").GetComponent<RectTransform>();
+
+        // get starting position and scale of multiplier text
+        multiplierTextStartingPosition = multiplierTextTransform.position;
+        multiplierTextStartingScale = multiplierTextTransform.localScale;
+
         // set texts
         scoreText.text = score.ToString();
         multiplierText.text = "x" + multiplier.ToString();
@@ -87,7 +99,8 @@ public class GameSession : MonoBehaviour
         {
             FindObjectOfType<NormalPickupParticlesHandler>().IncreaseNumberOfParticles();
             multiplier++;
-            multiplierText.text = "x" + multiplier.ToString();
+
+            StartCoroutine(MoveAndScaleMultiplierText(multiplierTextTransform, new Vector2(-0.5f, 1.75f)));
             pickupsCollectedWithoutMissing = 0;
 
             if (multiplier <= 7) IncreaseDifficulty();
@@ -124,6 +137,20 @@ public class GameSession : MonoBehaviour
 
         bonusSizeText.enabled = false;
         bonusSizeIncreasedText.enabled = false;
+    }
+
+    private IEnumerator MoveAndScaleMultiplierText(RectTransform textTransform, Vector2 targetPosition)
+    {
+        // move text down and left
+        textTransform.position = Vector2.MoveTowards(textTransform.position, targetPosition, 1000);
+        yield return new WaitForSeconds(0.5f);
+
+        multiplierText.text = "x" + multiplier.ToString();
+
+        yield return new WaitForSeconds(0.5f);
+
+        // move text to the previous position
+        textTransform.position = Vector2.MoveTowards(targetPosition, multiplierTextStartingPosition, 1000);
     }
 
     public int GetMultiplier()
