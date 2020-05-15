@@ -100,7 +100,7 @@ public class GameSession : MonoBehaviour
             FindObjectOfType<NormalPickupParticlesHandler>().IncreaseNumberOfParticles();
             multiplier++;
 
-            StartCoroutine(MoveAndScaleMultiplierText(multiplierTextTransform, new Vector2(-0.5f, 1.75f)));
+            StartCoroutine(MoveAndScaleMultiplierText(multiplierTextTransform, new Vector2(-0.5f, 1.75f), new Vector2(1.75f, 1.75f)));
             pickupsCollectedWithoutMissing = 0;
 
             if (multiplier <= 7) IncreaseDifficulty();
@@ -139,10 +139,11 @@ public class GameSession : MonoBehaviour
         bonusSizeIncreasedText.enabled = false;
     }
 
-    private IEnumerator MoveAndScaleMultiplierText(RectTransform textTransform, Vector2 targetPosition)
+    private IEnumerator MoveAndScaleMultiplierText(RectTransform textTransform, Vector2 targetPosition, Vector2 targetScale)
     {
         // move text down and left
-        textTransform.position = Vector2.MoveTowards(textTransform.position, targetPosition, 1000);
+        textTransform.position = Vector2.Lerp(textTransform.position, targetPosition, 1f);
+        textTransform.localScale = targetScale;
         yield return new WaitForSeconds(0.5f);
 
         multiplierText.text = "x" + multiplier.ToString();
@@ -150,7 +151,8 @@ public class GameSession : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // move text to the previous position
-        textTransform.position = Vector2.MoveTowards(targetPosition, multiplierTextStartingPosition, 1000);
+        textTransform.position = Vector2.Lerp(targetPosition, multiplierTextStartingPosition, 1f);
+        textTransform.localScale = multiplierTextStartingScale;
     }
 
     public int GetMultiplier()
