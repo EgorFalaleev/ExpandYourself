@@ -22,4 +22,14 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Options");
     }
+
+    public void LoadStarshipsUnlocks()
+    {
+        SceneManager.LoadScene("UnlocksStarships");
+    }
+
+    public void LoadBackgroundsUnlocks()
+    {
+        SceneManager.LoadScene("UnlocksBackgrounds");
+    }
 }
