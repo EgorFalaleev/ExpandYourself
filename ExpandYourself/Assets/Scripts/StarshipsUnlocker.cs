@@ -32,6 +32,9 @@ public class StarshipsUnlocker : MonoBehaviour
 
         totalPickupsCollectedText.text = "You collected " + totalPickupsCollected + " gears!";
 
+        // turn on unlocked starships and turn off blocked starships
+        ShowUnlockedStarships(totalPickupsCollected);
+
         // find the current selected starship
         chosenStarship = PlayerPrefs.GetInt("ChosenStarshipNumber", 0);
         currentStarship = GameObject.Find(GetStarshipName((Starships)chosenStarship));
@@ -53,6 +56,59 @@ public class StarshipsUnlocker : MonoBehaviour
             case Starships.FiveThousand: return "FiveThousand";
             case Starships.TenThousand: return "TenThousand";
             default: return "Starting";
+        }
+    }
+
+    private void ShowUnlockedStarships(int totalPickups)
+    {
+        GameObject starshipToCheck;
+        GameObject starshipImage;
+
+        // for each starship, check if it is unlocked and color it and turn on/off
+        for (int i = 0; i < 8; i++)
+        {
+            starshipToCheck = GameObject.Find(GetStarshipName((Starships)i));
+            starshipImage = GetSharshipImage(i);
+
+            if (totalPickups >= GetStarshipCost(i))
+            {
+                starshipImage.GetComponent<Image>().color = Color.white;
+            }
+            else
+            {
+                starshipImage.GetComponent<Image>().color = Color.black;
+                starshipToCheck.GetComponent<Button>().interactable = false;
+            }
+        }
+    }
+
+    private int GetStarshipCost(int starshipNumber)
+    {
+        switch(starshipNumber)
+        {
+            case 1: return 100;
+            case 2: return 300;
+            case 3: return 500;
+            case 4: return 1000;
+            case 5: return 3000;
+            case 6: return 5000;
+            case 7: return 10000;
+            default: return 0;
+        }
+    }
+
+    private GameObject GetSharshipImage(int starshipNumber)
+    {
+        switch (starshipNumber)
+        {
+            case 1: return GameObject.Find("100 Starship Image");
+            case 2: return GameObject.Find("300 Starship Image");
+            case 3: return GameObject.Find("500 Starship Image");
+            case 4: return GameObject.Find("1000 Starship Image");
+            case 5: return GameObject.Find("3000 Starship Image");
+            case 6: return GameObject.Find("5000 Starship Image");
+            case 7: return GameObject.Find("10000 Starship Image"); 
+            default: return GameObject.Find("Starting Starship Image");
         }
     }
 
