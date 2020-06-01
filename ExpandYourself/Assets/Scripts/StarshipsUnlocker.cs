@@ -112,6 +112,21 @@ public class StarshipsUnlocker : MonoBehaviour
         }
     }
 
+    private string GetStarshipName(int starshipNumber)
+    {
+        switch (starshipNumber)
+        {
+            case 1: return "100 starship";
+            case 2: return "300 starship";
+            case 3: return "500 starship";
+            case 4: return "1000 starship";
+            case 5: return "3000 starship";
+            case 6: return "5000 starship";
+            case 7: return "10000 starship";
+            default: return "Starting Starship";
+        }
+    }
+
     public void ChangeStarship(int starshipNumber)
     {
         // make the button interactable and remove its color
@@ -125,5 +140,12 @@ public class StarshipsUnlocker : MonoBehaviour
         currentStarship.GetComponent<Button>().interactable = false;
 
         PlayerPrefs.SetInt("ChosenStarshipNumber", starshipNumber);
+
+        UpdatePlayerStarship(starshipNumber);
+    }
+
+    private void UpdatePlayerStarship(int starshipNumber)
+    {
+        PlayerPrefs.SetString("PlayerSprite", GetStarshipName(starshipNumber));
     }
 }
