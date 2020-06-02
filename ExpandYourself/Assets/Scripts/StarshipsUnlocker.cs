@@ -146,6 +146,7 @@ public class StarshipsUnlocker : MonoBehaviour
 
     private void UpdatePlayerStarship(int starshipNumber)
     {
+        // set new player sprite
         PlayerPrefs.SetString("PlayerSprite", GetStarshipName(starshipNumber));
     }
 }

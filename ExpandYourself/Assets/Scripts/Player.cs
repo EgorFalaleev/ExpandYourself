@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
+        // set player sprite depending on his choice in unlocks 
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>($"Sprites/{PlayerPrefs.GetString("PlayerSprite", "Starting Starship")}");
 
         UpdatePlayerBounds();
