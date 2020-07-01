@@ -96,6 +96,17 @@ public class BackgroundsUnlocker : MonoBehaviour
         }
     }
 
+    private string GetBackgroundName(int backgroundNumber)
+    {
+        switch (backgroundNumber)
+        {
+            case 1: return "200 background";
+            case 2: return "350 background";
+            case 3: return "500 background";
+            default: return "Starting Background";
+        }
+    }
+
     public void ChangeBackground(int backgroundNumber)
     {
         // make the button interactable and remove its color
@@ -109,5 +120,15 @@ public class BackgroundsUnlocker : MonoBehaviour
         currentBackground.GetComponent<Button>().interactable = false;
 
         PlayerPrefs.SetInt("ChosenBackgroundNumber", backgroundNumber);
+
+        UpdateBackground(backgroundNumber);
+
+        FindObjectOfType<BackgroundChanger>().ChangeBackgroundImage();
+    }
+
+    private void UpdateBackground(int backgroundNumber)
+    {
+        // set new background
+        PlayerPrefs.SetString("BackgroundSprite", GetBackgroundName(backgroundNumber));
     }
 }
