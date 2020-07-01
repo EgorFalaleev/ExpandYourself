@@ -100,7 +100,8 @@ public class GameSession : MonoBehaviour
             FindObjectOfType<NormalPickupParticlesHandler>().IncreaseNumberOfParticles();
             multiplier++;
 
-            StartCoroutine(MoveAndScaleMultiplierText(multiplierTextTransform, new Vector2(-0.5f, 1.75f), new Vector2(1.75f, 1.75f)));
+            // move multipier text to the center of the screen and back
+            StartCoroutine(MoveAndScaleMultiplierText(multiplierTextTransform, new Vector2(1280f, 800f), new Vector2(1.75f, 1.75f)));
             pickupsCollectedWithoutMissing = 0;
 
             if (multiplier <= 7) IncreaseDifficulty();
