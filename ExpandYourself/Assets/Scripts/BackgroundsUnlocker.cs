@@ -122,7 +122,7 @@ public class BackgroundsUnlocker : MonoBehaviour
         PlayerPrefs.SetInt("ChosenBackgroundNumber", backgroundNumber);
 
         UpdateBackground(backgroundNumber);
-
+    
         FindObjectOfType<BackgroundChanger>().ChangeBackgroundImage();
     }
 
