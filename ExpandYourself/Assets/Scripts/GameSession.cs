@@ -9,7 +9,6 @@ public class GameSession : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text multiplierText;
     [SerializeField] Text bonusSizeText;
-    [SerializeField] Text bonusSizeIncreasedText;
     [Header("Pickup settings")]
     [SerializeField] int pointsToIncreaseMultiplier = 10;
     [SerializeField] int bonusSizePoints = 10;
@@ -41,7 +40,6 @@ public class GameSession : MonoBehaviour
 
         // disable bonus size text on the start
         bonusSizeText.enabled = false;
-        bonusSizeIncreasedText.enabled = false;
     }
 
     private void Start()
@@ -132,12 +130,10 @@ public class GameSession : MonoBehaviour
         // show text then destroy it
         bonusSizeText.text = $"Bonus size reached! + {bonusSizePoints} points!";
         bonusSizeText.enabled = true;
-        bonusSizeIncreasedText.enabled = true;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.5f);
 
         bonusSizeText.enabled = false;
-        bonusSizeIncreasedText.enabled = false;
     }
 
     private IEnumerator MoveAndScaleMultiplierText(RectTransform textTransform, Vector2 targetPosition, Vector2 targetScale)
