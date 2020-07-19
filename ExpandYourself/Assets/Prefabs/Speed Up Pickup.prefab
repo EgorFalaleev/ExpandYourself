@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 542531224859426089}
   - component: {fileID: 542531224859426094}
   - component: {fileID: -5975622991248327348}
-  - component: {fileID: 4273013023616233364}
+  - component: {fileID: 5924422702615524446}
   m_Layer: 0
   m_Name: Speed Up Pickup
   m_TagString: Speed Pickup
@@ -106,8 +106,8 @@ MonoBehaviour:
   pickupActiveTime: 1.5
   speedUpSound: {fileID: 8300000, guid: 58cb9104f1762214bb52bf5070919ba3, type: 3}
   speedDownSound: {fileID: 8300000, guid: 2d8bf786570dec24eaf03a1c9832b788, type: 3}
---- !u!58 &4273013023616233364
-CircleCollider2D:
+--- !u!61 &5924422702615524446
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -120,5 +120,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.64, y: 0.64}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5625453
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
