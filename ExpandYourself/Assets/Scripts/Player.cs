@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] float bonusSize = 3f;
     [SerializeField] float bonusSizeIncreasingValue = 0.25f;
     [SerializeField] AudioClip loseSound;
+    public bool tutorialMode = false;
 
     // cached references
     private SceneLoader sceneLoader;
@@ -179,7 +180,7 @@ public class Player : MonoBehaviour
     {
         if (!defeated)
         {
-            transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
+            if (!tutorialMode) transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
                                                transform.localScale.y - scalePerFrameDifferenceFactor * Time.deltaTime);
 
             UpdatePlayerBounds();

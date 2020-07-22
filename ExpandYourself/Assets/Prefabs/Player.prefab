@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d42852d028047b64eb1e594822efcca9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52fee96b14a6ed84aa9138ab34941e29, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,7 +122,6 @@ MonoBehaviour:
   bonusSize: 1.75
   bonusSizeIncreasingValue: 0.15
   loseSound: {fileID: 8300000, guid: 29d607055df73844fa92401320c123e2, type: 3}
-  deathVFX: {fileID: 76676110366136367, guid: 664e6cf86319c754fb9b56cfb22f3bf4, type: 3}
 --- !u!60 &419190676590236303
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -140,8 +139,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.3333334, y: 1.3333334}
-    newSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
