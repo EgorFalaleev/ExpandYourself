@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
         UpdatePlayerBounds();
 
         // turn off tutorial mode
-        tutorialMode = false;
+        if (FindObjectOfType<TutorialManager>()) tutorialMode = true;
     }
 
     void Update()
