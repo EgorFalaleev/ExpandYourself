@@ -102,7 +102,7 @@ MonoBehaviour:
   collectedVFX: {fileID: 5704655042383630325, guid: 6715337821baa244188458083b79a245,
     type: 3}
   slowSpeed: 1
-  increasedSpeed: 15
+  increasedSpeed: 10
   pickupActiveTime: 1.5
   speedUpSound: {fileID: 8300000, guid: 58cb9104f1762214bb52bf5070919ba3, type: 3}
   speedDownSound: {fileID: 8300000, guid: 2d8bf786570dec24eaf03a1c9832b788, type: 3}

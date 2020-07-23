@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>($"Sprites/{PlayerPrefs.GetString("PlayerSprite", "Starting Starship")}");
 
         UpdatePlayerBounds();
+
+        // turn off tutorial mode
+        tutorialMode = false;
     }
 
     void Update()
@@ -73,6 +76,8 @@ public class Player : MonoBehaviour
             if (touchHit.collider == playerCollider)
             {
                 dragging = true;
+
+                if (tutorialMode) FindObjectOfType<TutorialManager>().playerHasMoved = true;
             }
            
             // while dragging state is active move player to the touch position
@@ -92,6 +97,8 @@ public class Player : MonoBehaviour
     // mouse movement
     private void OnMouseDrag()
     {
+        if (tutorialMode) FindObjectOfType<TutorialManager>().playerHasMoved = true;
+
         // convert mouse position from screen space to world space
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
