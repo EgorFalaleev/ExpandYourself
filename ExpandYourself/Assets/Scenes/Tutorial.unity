@@ -1138,7 +1138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1271270162
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1267,7 +1267,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Also you can find this bonus. it increases your speed. Try it now!
+  m_Text: Also you can find this bonus. it increases your speed for a while. Try
+    it now!
 --- !u!222 &1274341269
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1765,7 +1766,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1764301405}
-        m_MethodName: LoadGameScene
+        m_MethodName: LoadGameAfterTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

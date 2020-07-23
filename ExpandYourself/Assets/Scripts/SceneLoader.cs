@@ -10,6 +10,12 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadGameScene()
     {
+        if (PlayerPrefs.GetInt("TotalPickups", 0) == 0) SceneManager.LoadScene("Tutorial");
+        else SceneManager.LoadScene("GameScene");
+    }
+
+    public void LoadGameAfterTutorial()
+    {
         SceneManager.LoadScene("GameScene");
     }
 
@@ -26,5 +32,15 @@ public class SceneLoader : MonoBehaviour
     public void LoadBackgroundsUnlocks()
     {
         SceneManager.LoadScene("UnlocksBackgrounds");
+    }
+
+    public void LoadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void DeleteKey()
+    {
+        PlayerPrefs.DeleteKey("TotalPickups");
     }
 }
