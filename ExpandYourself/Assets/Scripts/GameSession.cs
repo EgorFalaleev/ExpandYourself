@@ -26,6 +26,8 @@ public class GameSession : MonoBehaviour
     private int totalPickupsCollected = 0;
     private Vector2 multiplierTextStartingPosition;
     private Vector2 multiplierTextStartingScale;
+    private bool isMultiplierIncreased = false;
+    private bool isMultiplierOnCenter = false;
 
     // cached references
     RectTransform multiplierTextTransform;
@@ -34,7 +36,7 @@ public class GameSession : MonoBehaviour
     {
         int numberOfGameSessions = FindObjectsOfType<GameSession>().Length;
 
-        // singleton pattern - only one game session can be in the game
+        // singleton pattern - only one game session can exist in the game
         if (numberOfGameSessions > 1) Destroy(gameObject);
         else DontDestroyOnLoad(gameObject);
 
@@ -61,7 +63,14 @@ public class GameSession : MonoBehaviour
         // get volume settings
         pickupCollectedVolume = PlayerPrefs.GetFloat("VolumeOnOff", 0.5f);
     }
-
+    
+    private void Update()
+    {
+        // when multiplier increases, move it to center and back
+        if (isMultiplierIncreased) MoveMultiplierToCenter(multiplierTextTransform, new Vector2(1280f, 800f), new Vector2(1.75f, 1.75f));
+        else if (isMultiplierOnCenter) MoveMultiplierToStartPosition(multiplierTextTransform);
+    }
+    
     public void AddToScore(int amount)
     {
         // update stats info
@@ -98,8 +107,8 @@ public class GameSession : MonoBehaviour
             FindObjectOfType<NormalPickupParticlesHandler>().IncreaseNumberOfParticles();
             multiplier++;
 
-            // move multipier text to the center of the screen and back
-            StartCoroutine(MoveAndScaleMultiplierText(multiplierTextTransform, new Vector2(1280f, 800f), new Vector2(1.75f, 1.75f)));
+            isMultiplierIncreased = true;
+
             pickupsCollectedWithoutMissing = 0;
 
             if (multiplier <= 7) IncreaseDifficulty();
@@ -136,19 +145,26 @@ public class GameSession : MonoBehaviour
         bonusSizeText.enabled = false;
     }
 
-    private IEnumerator MoveAndScaleMultiplierText(RectTransform textTransform, Vector2 targetPosition, Vector2 targetScale)
+    private void MoveMultiplierToCenter(RectTransform textTransform, Vector2 targetPosition, Vector2 targetScale)
     {
         // move text down and left
-        textTransform.position = Vector2.Lerp(textTransform.position, targetPosition, 1f);
+        textTransform.position = Vector2.Lerp(textTransform.position, targetPosition, 0.05f);
         textTransform.localScale = targetScale;
-        yield return new WaitForSeconds(0.5f);
-
         multiplierText.text = "x" + multiplier.ToString();
 
-        yield return new WaitForSeconds(0.5f);
+        Invoke("ChangeMultiplierMoveBehavior", 1f);
+    }
 
-        // move text to the previous position
-        textTransform.position = Vector2.Lerp(targetPosition, multiplierTextStartingPosition, 1f);
+    private void ChangeMultiplierMoveBehavior()
+    {
+        isMultiplierIncreased = false;
+        isMultiplierOnCenter = true;
+    }
+
+    private void MoveMultiplierToStartPosition(RectTransform textTransform)
+    {
+        // move text to starting position
+        textTransform.position = Vector2.Lerp(textTransform.position, multiplierTextStartingPosition, 0.05f);
         textTransform.localScale = multiplierTextStartingScale;
     }
 
