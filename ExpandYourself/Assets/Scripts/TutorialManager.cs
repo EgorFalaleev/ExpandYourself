@@ -22,7 +22,7 @@ public class TutorialManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         player.tutorialMode = true;
     }
-
+    
     private void Update()
     {
         for (int i = 0; i < popups.Length; i++)
@@ -68,14 +68,23 @@ public class TutorialManager : MonoBehaviour
                     playerHasCollectedPickup = false;
                 }
                 break;
-            // learning shrink pickup collection
+            // learning shrink pickup collection, turning on portal pickup
             case 4:
+                if (playerHasCollectedPickup)
+                {
+                    currentPopupIndex++;
+                    pickups[4].SetActive(true);
+                    playerHasCollectedPickup = false;
+                }
+                break;
+            // learning portal pickup
+            case 5:
                 if (playerHasCollectedPickup)
                 {
                     currentPopupIndex++;
                 }
                 break;
-            case 5:
+            case 6:
                 playButton.SetActive(true);
                 break;
         }
