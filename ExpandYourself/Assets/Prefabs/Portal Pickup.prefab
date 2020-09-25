@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 682326587428186159}
   - component: {fileID: 682326587428186158}
-  - component: {fileID: 682326587428186145}
-  - component: {fileID: 682326587428186156}
+  - component: {fileID: 8401982612287935593}
+  - component: {fileID: 7840281928805427388}
   m_Layer: 0
-  m_Name: Normal Pickup
+  m_Name: Portal Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6115b8592af0f464f9871c4266069873, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 93c8fd9ee8d4418418a236e52e6e734b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &682326587428186145
-CircleCollider2D:
+--- !u!61 &8401982612287935593
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -96,10 +96,20 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.003835678, y: -0.011065245}
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.52316326
---- !u!114 &682326587428186156
+  m_Size: {x: 0.64, y: 0.64}
+  m_EdgeRadius: 0
+--- !u!114 &7840281928805427388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,7 +118,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 682326587428186144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e731d14de06fc774bb5e2379ab114dcc, type: 3}
+  m_Script: {fileID: 11500000, guid: 079ad82efce5ec94fa46b2d4850cee23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scaleToDestroy: 0.1
@@ -117,3 +127,4 @@ MonoBehaviour:
   valueToDecreaseIfNotCollected: 0.2
   collectedVFX: {fileID: 5704655042383630325, guid: 8193d950755910042a68196ba23a35af,
     type: 3}
+  portalPickupSound: {fileID: 8300000, guid: 58cb9104f1762214bb52bf5070919ba3, type: 3}

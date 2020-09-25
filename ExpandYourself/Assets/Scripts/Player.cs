@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     private bool dragging;
     private bool changeSpeedTaken = false;
 
-    void Start()
+    private void Start()
     {
         // get components and references
         sceneLoader = FindObjectOfType<SceneLoader>();
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
         if (FindObjectOfType<TutorialManager>()) tutorialMode = true;
     }
 
-    void Update()
+    private void Update()
     {
         Move();
     }
@@ -59,6 +59,9 @@ public class Player : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
 
+            dragging = true;
+            if (tutorialMode) FindObjectOfType<TutorialManager>().playerHasMoved = true;
+
             // convert touch position to world coordinates
             Vector2 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             Vector2 touchPosition2D = new Vector2(touchPosition.x, touchPosition.y);
@@ -68,17 +71,6 @@ public class Player : MonoBehaviour
             touchPosition.y = Mathf.Clamp(touchPosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
 
             RotateToTouchPosition(touchPosition);
-
-            // throw a ray from the touch position
-            RaycastHit2D touchHit = Physics2D.Raycast(touchPosition2D, Vector2.zero);
-           
-            // if the ray collides with player, activate the dragging state
-            if (touchHit.collider == playerCollider)
-            {
-                dragging = true;
-
-                if (tutorialMode) FindObjectOfType<TutorialManager>().playerHasMoved = true;
-            }
            
             // while dragging state is active move player to the touch position
             if (dragging)
@@ -94,40 +86,12 @@ public class Player : MonoBehaviour
         Shrink();
     }
 
-    // mouse movement
-    private void OnMouseDrag()
-    {
-        if (tutorialMode) FindObjectOfType<TutorialManager>().playerHasMoved = true;
-
-        // convert mouse position from screen space to world space
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // clamp mouse inside game screen
-        mousePosition.x = Mathf.Clamp(mousePosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
-        mousePosition.y = Mathf.Clamp(mousePosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
-
-        RotateToMousePosition(mousePosition);
-
-        // move player to the mouse position
-        Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
-        transform.position = Vector2.MoveTowards(transform.position, mousePosition, movementSpeed * Time.deltaTime);
-    }
-
     private void RotateToTouchPosition(Vector2 touchPos)
     {
         // find the direction vector 
         Vector2 direction = new Vector2(touchPos.x - transform.position.x, touchPos.y - transform.position.y);
 
         // "look" at the touch
-        transform.up = direction;
-    }
-
-    private void RotateToMousePosition(Vector2 mousePos)
-    {
-        // find the direction vector
-        Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
-
-        // "look" at the mouse
         transform.up = direction;
     }
 
@@ -204,7 +168,7 @@ public class Player : MonoBehaviour
         if (changeSpeedTaken) movementSpeed = movementSpeedPickupInfluence;
 
         // speed-size relation
-        else movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 0.5f);
+        else movementSpeed = (Mathf.Exp(2.5f - transform.localScale.x) + 1);
     }
 
     private void Defeat()
@@ -230,7 +194,13 @@ public class Player : MonoBehaviour
 
         Destroy(gameObject);
     }
-
+    
+    public void TeleportAfterPortal()
+    {
+        transform.position = new Vector2(Random.Range(screenBounds.x - transform.localScale.x, -screenBounds.x + transform.localScale.x),
+                                         Random.Range(screenBounds.y - transform.localScale.y, -screenBounds.y + transform.localScale.y));
+    }
+   
     public void AcceleratePlayerShrinking(float value)
     {
         scalePerFrameDifferenceFactor += value;
@@ -240,5 +210,39 @@ public class Player : MonoBehaviour
     {
         changeSpeedTaken = effectState;
         movementSpeedPickupInfluence = value;
+    }
+
+    private void OnMouseDrag()
+    {
+        // convert mouse position from screen space to world space
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // clamp mouse inside game screen
+        mousePosition.x = Mathf.Clamp(mousePosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
+        mousePosition.y = Mathf.Clamp(mousePosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
+
+        RotateToMousePosition(mousePosition);
+
+        // move player to the mouse position
+        Vector3 normalizedPosition = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
+        transform.position = Vector2.MoveTowards(transform.position, mousePosition, movementSpeed * Time.deltaTime);
+
+        if (tutorialMode) FindObjectOfType<TutorialManager>().playerHasMoved = true;
+    }
+
+    private void RotateToMousePosition(Vector2 mousePos)
+    {
+        float distanceBetweenMouseAndPlayer = Mathf.Sqrt(Mathf.Pow(mousePos.x - transform.position.x, 2)
+                                                       + Mathf.Pow(mousePos.y - transform.position.y, 2));
+
+        // rotate only if mouse is not overlapping the player
+        if (distanceBetweenMouseAndPlayer > playerWidth && distanceBetweenMouseAndPlayer > playerHeight)
+        {
+            // find the direction vector
+            Vector2 direction = new Vector2(mousePos.x - transform.position.x, mousePos.y - transform.position.y);
+
+            // "look" at the mouse
+            transform.up = direction;
+        }
     }
 }

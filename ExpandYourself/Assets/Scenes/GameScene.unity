@@ -223,7 +223,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -473,10 +473,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -641,6 +641,7 @@ MonoBehaviour:
   - {fileID: 3515116345445927853, guid: 820484402a759c841989886b4d7e84d7, type: 3}
   - {fileID: 6973988537371000740, guid: 9fea12420aae17c46aa40ba63c4e862b, type: 3}
   - {fileID: 542531224859426095, guid: 8e79c6cb020697b4f815ee26e6afd3a6, type: 3}
+  - {fileID: 682326587428186144, guid: 4d65807bdc380a94da191bec6ecaf28b, type: 3}
   timeBetweenSpawns: 1.5
   minPickupScale: 0.75
   maxPickupScale: 1.5
@@ -720,11 +721,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5657679857277236553, guid: 4b711e763a5da914db0f0538593e6785,
-        type: 3}
-      propertyPath: pointsToIncreaseMultiplier
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5657679857277236554, guid: 4b711e763a5da914db0f0538593e6785,
         type: 3}
       propertyPath: m_LocalPosition.x

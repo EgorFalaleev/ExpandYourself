@@ -96,14 +96,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scaleToDestroy: 0.1
-  scalePerFrameDifferenceFactor: 0.5
+  scalePerFrameDifferenceFactor: 0.25
   pointsPerPickup: 1
   valueToDecreaseIfNotCollected: 0.2
   collectedVFX: {fileID: 5704655042383630325, guid: 509789f61d6efba4e863b77e12d1568b,
     type: 3}
   slowSpeed: 1
   increasedSpeed: 7
-  pickupActiveTime: 1
+  pickupActiveTime: 0.75
   speedUpSound: {fileID: 8300000, guid: 58cb9104f1762214bb52bf5070919ba3, type: 3}
   speedDownSound: {fileID: 8300000, guid: 2d8bf786570dec24eaf03a1c9832b788, type: 3}
 --- !u!61 &5722289369753255414

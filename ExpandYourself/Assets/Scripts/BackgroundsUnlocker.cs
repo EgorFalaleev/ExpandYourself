@@ -26,16 +26,16 @@ public class BackgroundsUnlocker : MonoBehaviour
         // get high score
         highScore = PlayerPrefs.GetInt("HighScore");
 
-        highScoreText.text = $"Your high score is {highScore}!";
+        highScoreText.text = $"Your high score: {highScore}!";
 
-        // turn on unlocked starships and turn off blocked starships
+        // turn on unlocked backgrounds and turn off blocked backgrounds
         ShowUnlockedBackgrounds(highScore);
 
         // find the current selected background
         chosenBackground = PlayerPrefs.GetInt("ChosenBackgroundNumber", 0);
         currentBackground = GameObject.Find(GetBackgroundName((Backgrounds)chosenBackground));
 
-        // color selected background to orange and prevent it to being clicked
+        // color selected background to orange and prevent it from being clicked
         currentBackground.GetComponent<Image>().color = new Color(0.91f, 0.7f, 0.435f, 0.537f);
         currentBackground.GetComponent<Button>().interactable = false;
     }
@@ -45,7 +45,7 @@ public class BackgroundsUnlocker : MonoBehaviour
         GameObject backgroundToCheck;
         GameObject backgroundImage;
 
-        // for each starship, check if it is unlocked and color it and turn on/off
+        // for each background, check if it is unlocked and color it and turn on/off
         for (int i = 0; i < 4; i++)
         {
             backgroundToCheck = GameObject.Find(GetBackgroundName((Backgrounds)i));

@@ -16,6 +16,7 @@ public class PickupGenerator : MonoBehaviour
     private int negativePickupProbability;
     private int slowPickupProbability;
     private int speedUpPickupProbability;
+    private int portalPickupProbability;
 
     private void Start()
     {
@@ -35,8 +36,17 @@ public class PickupGenerator : MonoBehaviour
 
         // select pickup type depending on probability
         if (probability <= neutralPickupProbability) pickupIndex = 0;
-        else if (probability > neutralPickupProbability && probability <= negativePickupProbability) pickupIndex = 1;
+
+        // spawn portal pickup
+        else if (probability > neutralPickupProbability && probability <= portalPickupProbability) pickupIndex = 4;
+
+        // spawn shrink pickup
+        else if (probability > portalPickupProbability && probability <= negativePickupProbability) pickupIndex = 1;
+
+        // spawn slow pickup
         else if (probability > negativePickupProbability && probability <= slowPickupProbability) pickupIndex = 2;
+
+        // spawn speed pickup
         else if (probability > slowPickupProbability && probability <= speedUpPickupProbability) pickupIndex = 3;
 
         // spawn a pickup
@@ -98,19 +108,22 @@ public class PickupGenerator : MonoBehaviour
                 speedUpPickupProbability = 100;
                 break;
             case 3:
-                neutralPickupProbability = 75;
+                neutralPickupProbability = 65;
+                portalPickupProbability = 75;
                 negativePickupProbability = 85;
                 slowPickupProbability = 90;
                 speedUpPickupProbability = 100;
                 break;
             case 4:
-                neutralPickupProbability = 70;
+                neutralPickupProbability = 60;
+                portalPickupProbability = 70;
                 negativePickupProbability = 80;
                 slowPickupProbability = 90;
                 speedUpPickupProbability = 100;
                 break;
             default:
-                neutralPickupProbability = 65;
+                neutralPickupProbability = 55;
+                portalPickupProbability = 65;
                 negativePickupProbability = 75;
                 slowPickupProbability = 90;
                 speedUpPickupProbability = 100;

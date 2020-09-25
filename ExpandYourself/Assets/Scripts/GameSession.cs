@@ -63,11 +63,11 @@ public class GameSession : MonoBehaviour
         // get volume settings
         pickupCollectedVolume = PlayerPrefs.GetFloat("VolumeOnOff", 0.5f);
     }
-    
+
     private void Update()
     {
         // when multiplier increases, move it to center and back
-        if (isMultiplierIncreased) MoveMultiplierToCenter(multiplierTextTransform, new Vector2(1280f, 800f), new Vector2(1.75f, 1.75f));
+        if (isMultiplierIncreased) MoveMultiplierToCenter(multiplierTextTransform, new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(1.75f, 1.75f));
         else if (isMultiplierOnCenter) MoveMultiplierToStartPosition(multiplierTextTransform);
     }
     
@@ -112,6 +112,7 @@ public class GameSession : MonoBehaviour
             pickupsCollectedWithoutMissing = 0;
 
             if (multiplier <= 7) IncreaseDifficulty();
+            if (multiplier == 10) IncreaseDifficulty();
         }
     }
 
@@ -148,7 +149,7 @@ public class GameSession : MonoBehaviour
     private void MoveMultiplierToCenter(RectTransform textTransform, Vector2 targetPosition, Vector2 targetScale)
     {
         // move text down and left
-        textTransform.position = Vector2.Lerp(textTransform.position, targetPosition, 0.05f);
+        textTransform.position = Vector2.Lerp(textTransform.position, targetPosition, 0.2f);
         textTransform.localScale = targetScale;
         multiplierText.text = "x" + multiplier.ToString();
 
@@ -164,7 +165,7 @@ public class GameSession : MonoBehaviour
     private void MoveMultiplierToStartPosition(RectTransform textTransform)
     {
         // move text to starting position
-        textTransform.position = Vector2.Lerp(textTransform.position, multiplierTextStartingPosition, 0.05f);
+        textTransform.position = Vector2.Lerp(textTransform.position, multiplierTextStartingPosition, 0.2f);
         textTransform.localScale = multiplierTextStartingScale;
     }
 

@@ -320,7 +320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.21250153, y: 3.653}
+  m_AnchoredPosition: {x: 0.21250153, y: 2.7360003}
   m_SizeDelta: {x: 2411, y: 436.545}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &390699385
@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 390699386}
   m_Layer: 0
   m_Name: 'Slow Tutorial Pickup '
-  m_TagString: Untagged
+  m_TagString: Slow Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,8 +380,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b601c28124abbff4dbc6d97981588fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSlowPickup: 1
-  isSpeedPickup: 0
   isShrinkPickup: 0
   collectedVFX: {fileID: 5704655042383630325, guid: 509789f61d6efba4e863b77e12d1568b,
     type: 3}
@@ -483,7 +481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.21250153, y: 3.557}
+  m_AnchoredPosition: {x: 0.21250153, y: 2.64}
   m_SizeDelta: {x: 2411, y: 467.273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &406404971
@@ -598,10 +596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b601c28124abbff4dbc6d97981588fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSlowPickup: 0
-  isSpeedPickup: 0
   isShrinkPickup: 1
-  collectedVFX: {fileID: 5704655042383630325, guid: 509789f61d6efba4e863b77e12d1568b,
+  collectedVFX: {fileID: 5704655042383630325, guid: a2bada05ac5ca924489300737583d9f9,
     type: 3}
 --- !u!212 &439970156
 SpriteRenderer:
@@ -689,7 +685,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -836,8 +832,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b601c28124abbff4dbc6d97981588fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSlowPickup: 0
-  isSpeedPickup: 0
   isShrinkPickup: 0
   collectedVFX: {fileID: 5704655042383630325, guid: 8193d950755910042a68196ba23a35af,
     type: 3}
@@ -971,7 +965,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Well done! In real game your starship will become smaller all the time.
-    To keep him big collect gears. try to collect one now!
+    To keep it big collect gears. try to collect one now!
 --- !u!222 &1120953825
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -996,7 +990,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.21250153, y: 3.612}
+  m_AnchoredPosition: {x: 0.21250153, y: 2.6950002}
   m_SizeDelta: {x: 2411, y: 444.227}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1127809195
@@ -1155,7 +1149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.21250153, y: 3.245}
+  m_AnchoredPosition: {x: 0.21250153, y: 2.328}
   m_SizeDelta: {x: 2411, y: 567.136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1271270163
@@ -1233,7 +1227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.21250153, y: 3.7078247}
+  m_AnchoredPosition: {x: 0.21250153, y: 2.790825}
   m_SizeDelta: {x: 2411, y: 413.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1274341268
@@ -1325,10 +1319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1425,10 +1419,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1513,7 +1507,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -810.6667, y: -602}
+  m_AnchoredPosition: {x: -810.6667, y: -480}
   m_SizeDelta: {x: -2007.6, y: 146.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430824587
@@ -1719,7 +1713,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 934.9, y: -602}
+  m_AnchoredPosition: {x: 934.9, y: -480}
   m_SizeDelta: {x: -2166.4, y: 146.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1448449744
@@ -1846,8 +1840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.21250153, y: 3.389}
-  m_SizeDelta: {x: 2411, y: 323.745}
+  m_AnchoredPosition: {x: 0.21250153, y: 2.457}
+  m_SizeDelta: {x: 2411, y: 328.728}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1592183831
 MonoBehaviour:
@@ -1880,7 +1874,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Hello! This is your starship! To move it tap on it and drag in any direction
+  m_Text: 'Hello! This is your starship! To move it tap and hold anywhere on the
+    screen '
 --- !u!222 &1592183832
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1992,7 +1987,7 @@ GameObject:
   - component: {fileID: 1881996847}
   m_Layer: 0
   m_Name: 'Speed Tutorial Pickup '
-  m_TagString: Untagged
+  m_TagString: Speed Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2035,8 +2030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b601c28124abbff4dbc6d97981588fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSlowPickup: 0
-  isSpeedPickup: 1
   isShrinkPickup: 0
   collectedVFX: {fileID: 5704655042383630325, guid: 6715337821baa244188458083b79a245,
     type: 3}
@@ -2158,7 +2151,7 @@ PrefabInstance:
     - target: {fileID: 849262168879002503, guid: 6e7ead3b3194a2b47ab174960f568e5e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: -1.38
       objectReference: {fileID: 0}
     - target: {fileID: 849262168879002503, guid: 6e7ead3b3194a2b47ab174960f568e5e,
         type: 3}

@@ -38,9 +38,4 @@ public class SceneLoader : MonoBehaviour
     {
         SceneManager.LoadScene("Tutorial");
     }
-
-    public void DeleteKey()
-    {
-        PlayerPrefs.DeleteKey("TotalPickups");
-    }
 }
