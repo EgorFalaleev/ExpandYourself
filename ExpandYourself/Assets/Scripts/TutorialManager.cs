@@ -22,7 +22,7 @@ public class TutorialManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         player.tutorialMode = true;
     }
-    
+
     private void Update()
     {
         for (int i = 0; i < popups.Length; i++)

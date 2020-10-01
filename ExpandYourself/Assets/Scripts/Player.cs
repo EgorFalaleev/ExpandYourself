@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private GameSession gameSession;
     private PolygonCollider2D playerCollider;
     private Rigidbody2D playerRigidBody;
+    private TrailRenderer trailRenderer;
 
     // state variables
     private Vector2 screenBounds;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     private bool defeated = false;
     private bool dragging;
     private bool changeSpeedTaken = false;
+    private bool isShrinking = true;
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
         gameSession = FindObjectOfType<GameSession>();
         playerCollider = GetComponent<PolygonCollider2D>();
         playerRigidBody = GetComponent<Rigidbody2D>();
+        trailRenderer = GetComponent<TrailRenderer>();
 
         // get screen bounds
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
@@ -42,8 +45,9 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>($"Sprites/{PlayerPrefs.GetString("PlayerSprite", "Starting Starship")}");
 
         UpdatePlayerBounds();
+        SetTrailColor();
 
-        // turn off tutorial mode
+        // turn on tutorial mode
         if (FindObjectOfType<TutorialManager>()) tutorialMode = true;
     }
 
@@ -71,7 +75,7 @@ public class Player : MonoBehaviour
             touchPosition.y = Mathf.Clamp(touchPosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
 
             RotateToTouchPosition(touchPosition);
-           
+
             // while dragging state is active move player to the touch position
             if (dragging)
             {
@@ -97,39 +101,51 @@ public class Player : MonoBehaviour
 
     public void IncreaseSize(float sizeIncreasingValue)
     {
+        StartCoroutine(IncreaseSizeCoroutine(sizeIncreasingValue));
+    }
+
+    private IEnumerator IncreaseSizeCoroutine(float sizeIncreasingValue)
+    {
+        isShrinking = false;
+
         float scaleRelation = sizeIncreasingValue / transform.localScale.x;
+        float increaseFactor = 10f;
 
         // increase size by different value depending on the scale relation between pickup and player
         if (scaleRelation >= 5)
         {
-            transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 10,
-                                               transform.localScale.y + scaleRelation / 10);
+            increaseFactor = 10f;
         }
-        else if (scaleRelation < 10 && scaleRelation >= 1)
+        else if (scaleRelation >= 1)
         {
-            transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 3f,
-                                               transform.localScale.y + scaleRelation / 3f);
+            increaseFactor = 3f;
         }
         else
         {
-            transform.localScale = new Vector2(transform.localScale.x + scaleRelation / 1.5f,
-                                               transform.localScale.y + scaleRelation / 1.5f);
+            increaseFactor = 1.5f;
         }
 
+        Vector2 currentScale = transform.localScale;
+        float targetScale = transform.localScale.x + scaleRelation / increaseFactor - 0.01f;
+
         // if player reaches bonus size, don't increase more 
-        if (transform.localScale.x >= bonusSize)
+        if (targetScale >= bonusSize)
         {
-            transform.localScale = new Vector2(bonusSize, bonusSize);
-
-            // add bonus points
+            targetScale = bonusSize;
             gameSession.ProcessBonusSizeReached();
-
-            // increase bonus size
             bonusSize += bonusSizeIncreasingValue;
         }
 
-        UpdatePlayerBounds();
-        HandleMoveSpeed();
+        while (transform.localScale.x < targetScale)
+        {
+            currentScale = Vector2.Lerp(currentScale, new Vector2(targetScale, targetScale), 0.1f);
+            transform.localScale = currentScale;
+            UpdatePlayerBounds();
+            HandleMoveSpeed();
+            yield return null;
+        }
+
+        isShrinking = true;
     }
 
     public void DecreaseSize(float valueToDecrease)
@@ -149,6 +165,8 @@ public class Player : MonoBehaviour
 
     private void Shrink()
     {
+        if (!isShrinking) return;
+
         if (!defeated)
         {
             if (!tutorialMode) transform.localScale = new Vector2(transform.localScale.x - scalePerFrameDifferenceFactor * Time.deltaTime,
@@ -194,13 +212,13 @@ public class Player : MonoBehaviour
 
         Destroy(gameObject);
     }
-    
+
     public void TeleportAfterPortal()
     {
         transform.position = new Vector2(Random.Range(screenBounds.x - transform.localScale.x, -screenBounds.x + transform.localScale.x),
                                          Random.Range(screenBounds.y - transform.localScale.y, -screenBounds.y + transform.localScale.y));
     }
-   
+
     public void AcceleratePlayerShrinking(float value)
     {
         scalePerFrameDifferenceFactor += value;
@@ -210,6 +228,39 @@ public class Player : MonoBehaviour
     {
         changeSpeedTaken = effectState;
         movementSpeedPickupInfluence = value;
+    }
+
+    private void SetTrailColor()
+    {
+        Color trailColor = trailRenderer.endColor;
+
+        switch(PlayerPrefs.GetInt("TrailColor", 0))
+        {
+            case 1:
+                trailColor = new Color(0.17f, 0.27f, 0.31f);
+                break;
+            case 2:
+                trailColor = new Color(0.96f, 0.85f, 0.577f);
+                break;
+            case 3:
+                trailColor = new Color(0.23f, 0.44f, 0.56f);
+                break;
+            case 4:
+                trailColor = new Color(0.91f, 0.7f, 0.435f);
+                break;
+            case 5:
+                trailColor = new Color(0.93f, 0.9f, 0.8f);
+                break;
+            case 6:
+                trailColor = new Color(0.31f, 0.365f, 0.26f);
+                break;
+            case 7:
+                trailColor = Color.black;
+                break;
+            default:
+                trailColor = new Color(0.92f, 0.9f, 0.8f);
+                break;
+        }
     }
 
     private void OnMouseDrag()

@@ -70,7 +70,7 @@ public class GameSession : MonoBehaviour
         if (isMultiplierIncreased) MoveMultiplierToCenter(multiplierTextTransform, new Vector2(Screen.width / 2, Screen.height / 2), new Vector2(1.75f, 1.75f));
         else if (isMultiplierOnCenter) MoveMultiplierToStartPosition(multiplierTextTransform);
     }
-    
+
     public void AddToScore(int amount)
     {
         // update stats info
@@ -118,12 +118,12 @@ public class GameSession : MonoBehaviour
 
     private void IncreaseDifficulty()
     {
-         // increase difficulty by speeding up the player's and pickup's shrinking speed
-         FindObjectOfType<Player>().AcceleratePlayerShrinking(playerDecreasingSizeValue);
-         FindObjectOfType<Pickup>().AcceleratePickupShrinking(pickupDecreasingSizeValue);
-         
-         // decrease time between pickups spawns
-         FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);
+        // increase difficulty by speeding up the player's and pickup's shrinking speed
+        FindObjectOfType<Player>().AcceleratePlayerShrinking(playerDecreasingSizeValue);
+        FindObjectOfType<Pickup>().AcceleratePickupShrinking(pickupDecreasingSizeValue);
+
+        // decrease time between pickups spawns
+        FindObjectOfType<PickupGenerator>().DecreaseTimeBetweenSpawns(decreasingTimeBetweenSpawnsValue);
     }
 
     public void ProcessBonusSizeReached()
