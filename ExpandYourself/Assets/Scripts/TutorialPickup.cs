@@ -68,7 +68,6 @@ public class TutorialPickup : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1.5f);
-        Debug.Log("Invoked");
 
         player.HandleSpeedPickup(false, speedInfluence);
         tutorialManager.playerHasCollectedPickup = true;

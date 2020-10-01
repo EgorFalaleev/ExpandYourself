@@ -146,7 +146,8 @@ public class StarshipsUnlocker : MonoBehaviour
 
     private void UpdatePlayerStarship(int starshipNumber)
     {
-        // set new player sprite
+        // set new player sprite and trail color
         PlayerPrefs.SetString("PlayerSprite", GetStarshipName(starshipNumber));
+        PlayerPrefs.SetInt("TrailColor", starshipNumber);
     }
 }

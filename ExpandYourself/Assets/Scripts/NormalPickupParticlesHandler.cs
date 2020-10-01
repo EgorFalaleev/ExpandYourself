@@ -15,7 +15,7 @@ public class NormalPickupParticlesHandler : MonoBehaviour
             var mainModule = particles.main;
             mainModule.startSize = Random.Range(0.25f, 0.35f);
             mainModule.startLifetime = Random.Range(0.5f, 1f);
-            particlesEmission.SetBurst(0, new ParticleSystem.Burst(0, 100));
+            particlesEmission.SetBurst(0, new ParticleSystem.Burst(0, 150));
         }
     }
 
