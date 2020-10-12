@@ -126,7 +126,7 @@ public class Player : MonoBehaviour
         }
 
         Vector2 currentScale = transform.localScale;
-        float targetScale = transform.localScale.x + scaleRelation / increaseFactor - 0.01f;
+        float targetScale = transform.localScale.x + scaleRelation / increaseFactor;
 
         // if player reaches bonus size, don't increase more 
         if (targetScale >= bonusSize)
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
             bonusSize += bonusSizeIncreasingValue;
         }
 
-        while (transform.localScale.x < targetScale)
+        while (transform.localScale.x < targetScale - 0.01f)
         {
             currentScale = Vector2.Lerp(currentScale, new Vector2(targetScale, targetScale), 0.1f);
             transform.localScale = currentScale;
